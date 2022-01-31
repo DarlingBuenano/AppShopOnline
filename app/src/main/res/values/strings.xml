@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Agora Marketplace</string>
+    <string name="app_welcome">Bienvenido a Agora MarketPlace</string>
+    <string name="app_login_description">Inicia sesión y conoce todos los artículos que los emprendedores de tu ciudad ofrecen</string>
+    <string name="app_login_register">¿Aún no tienes cuenta? Regístrate aquí</string>
+
+    <!--Menu general-->
+    <string name="menu_home">Inicio</string>
+    <string name="menu_chats">Chats</string>
+    <string name="menu_carrito">Carrito</string>
+    <string name="menu_favoritos">Favoritos</string>
+    <string name="menu_cuenta">Cuenta</string>
+
+    <!--Menu del home-->
+    <string name="btn_vegetales">Vegetales</string>
+    <string name="btn_frutas">Frutas</string>
+    <string name="btn_granos">Granos</string>
+    <string name="btn_otros">Otros</string>
+</resources>

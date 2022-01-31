@@ -1,0 +1,24 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.AppShopOnline" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/app_button</item> <!--Color para los botones-->
+        <item name="colorPrimaryVariant">@color/app_font</item> <!--Color para la fuente del boton primary-->
+        <item name="colorOnPrimary">@color/app_font_button</item> <!--Color para la fuente cuando el primario esta seleccionado-->
+        <item name="colorPrimaryDark">@color/app_primary_dark</item>
+
+        <item name="colorSurface">@color/app_font</item> <!--Color para la fuente de una tarjeta-->
+        <item name="colorOnSurface">@color/app_font</item> <!--Color para la fuente-->
+
+        <item name="android:colorBackground">@color/app_background</item> <!--Color para el fondo-->
+        <item name="android:colorForeground">@color/app_font</item> <!--Color para el texto de os inputs-->
+
+        <item name="colorSecondary">@color/app_button</item> <!--Color para botones flotantes, check, radiobutton, etc-->
+        <item name="colorSecondaryVariant">@color/app_font</item> <!--Color de letra para el Secundary-->
+        <item name="colorOnSecondary">@color/app_font</item> <!--Color de letra cuando el Secundary esta seleccionado-->
+
+        <item name="android:textColor">@color/app_font</item> <!--Color de letra para textos, etc-->
+
+        <item name="colorError">@color/app_error</item>
+        <item name="colorOnError">@color/app_error_font</item>
+    </style>
+</resources>

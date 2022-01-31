@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity"
+    android:orientation="vertical"
+    android:padding="@dimen/dpPddHome">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dpMrgGeneral"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btnAtras"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_atras"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/menu_home"
+            android:textSize="@dimen/spNivel3"
+            app:layout_constraintEnd_toStartOf="@+id/btnNavigatorCuenta"
+            app:layout_constraintStart_toEndOf="@+id/btnAtras"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btnNavigatorCuenta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_account"
+            android:backgroundTint="@color/app_font"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:name="software.appshoponline.HeaderFragment"
+        />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/app_background"
+        app:elevation="10dp"
+        app:itemHorizontalTranslationEnabled="false"
+        app:itemIconTint="@color/app_menu_botton"
+        app:itemTextColor="@color/app_menu_botton"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/menu_bottom_client" />
+
+</LinearLayout>
