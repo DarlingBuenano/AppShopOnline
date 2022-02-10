@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".client.HomeFragment">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@drawable/shape_rectangle_corners"
+        android:elevation="@dimen/dpElevation">
+
+        <Button
+            android:id="@+id/frghome_btnVegetales"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_vegetales"
+            android:textAllCaps="false"
+            android:textSize="@dimen/spNivel0"
+            android:textColor="@color/app_font"
+            app:backgroundTint="@null"
+            android:background="@drawable/state_btn_header_lef"
+            android:onClick="on"/>
+        <Button
+            android:id="@+id/frghome_btnFrutas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_frutas"
+            android:textAllCaps="false"
+            android:textSize="@dimen/spNivel0"
+            android:textColor="@color/app_font"
+            app:backgroundTint="@null"
+            android:background="@drawable/state_btn_header"/>
+        <Button
+            android:id="@+id/frghome_btnGranos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_granos"
+            android:textAllCaps="false"
+            android:textSize="@dimen/spNivel0"
+            android:textColor="@color/app_font"
+            app:backgroundTint="@null"
+            android:background="@drawable/state_btn_header"/>
+        <Button
+            android:id="@+id/frghome_btnOtros"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_otros"
+            android:textAllCaps="false"
+            android:textSize="@dimen/spNivel0"
+            android:textColor="@color/app_font"
+            app:backgroundTint="@null"
+            android:background="@drawable/shp_btn_header_right"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/dpMrgTop"
+        android:gravity="end">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/shp_input_buscar"
+            android:paddingLeft="@dimen/dpPddInputSearch"
+            android:paddingRight="@dimen/dpPddInputSearch">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_search" />
+            <EditText
+                android:layout_width="wrap_content"
+                android:minWidth="150dp"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/spNivel0"
+                android:hint="Buscar"
+                android:textColorHint="@color/app_font"
+                android:background="@null"
+                android:padding="@dimen/dpPddInputSearch"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shp_input_buscar"
+            android:padding="@dimen/dpPddInputSearch">
+            <ImageButton
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_filter"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frg_container_reciclerviews"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dpMrgTop"/>
+
+</LinearLayout>

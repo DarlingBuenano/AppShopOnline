@@ -1,4 +1,4 @@
-package software.appshoponline;
+package software.appshoponline.business;
 
 import android.os.Bundle;
 
@@ -8,12 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import software.appshoponline.R;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link BodyCardsFragment#newInstance} factory method to
+ * Use the {@link StatisticBusiFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BodyCardsFragment extends Fragment {
+public class StatisticBusiFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +26,7 @@ public class BodyCardsFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public BodyCardsFragment() {
+    public StatisticBusiFragment() {
         // Required empty public constructor
     }
 
@@ -34,11 +36,11 @@ public class BodyCardsFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment BodyCardsFragment.
+     * @return A new instance of fragment StatisticBusiFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static BodyCardsFragment newInstance(String param1, String param2) {
-        BodyCardsFragment fragment = new BodyCardsFragment();
+    public static StatisticBusiFragment newInstance(String param1, String param2) {
+        StatisticBusiFragment fragment = new StatisticBusiFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,6 +61,6 @@ public class BodyCardsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_body_cards, container, false);
+        return inflater.inflate(R.layout.fragment_statistic_busi, container, false);
     }
 }

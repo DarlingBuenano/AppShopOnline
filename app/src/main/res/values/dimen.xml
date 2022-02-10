@@ -14,12 +14,16 @@
     <dimen name="dpPddVentana">20dp</dimen>
     <dimen name="dpPddHome">10dp</dimen>
     <dimen name="dpPddInput">15dp</dimen>
+    <dimen name="dpPddInputSearch">10dp</dimen>
     <dimen name="dpPddButton">15dp</dimen>
     <dimen name="dpPddBtnHeader">12dp</dimen>
 
     <dimen name="dpMrgEntreInputs">18dp</dimen>
     <dimen name="dpMrgTop">18dp</dimen>
     <dimen name="dpMrgGeneral">10dp</dimen>
+
+    <dimen name="dpElevation">12dp</dimen>
+    <dimen name="dpCorners">12dp</dimen>
 
     <!--Cards-->
     <dimen name="dpTmFavorito">18dp</dimen>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/shp_btn_header_lef_selected"/> <!--default-->
+
+    <item
+        android:state_selected="false"
+        android:drawable="@drawable/shp_btn_header_lef"/>
+    <item
+        android:state_selected="true"
+        android:drawable="@drawable/shp_btn_header_lef_selected"/>
+</selector>

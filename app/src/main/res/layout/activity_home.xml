@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,10 +10,14 @@
     android:padding="@dimen/dpPddHome">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dpMrgGeneral"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/dpMrgGeneral"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
             android:id="@+id/btnAtras"
@@ -42,13 +46,15 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <fragment
+    <FrameLayout
+        android:id="@+id/frg_container_client"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:name="software.appshoponline.HeaderFragment"
-        />
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/constraintLayout"
+        app:layout_constraintBottom_toTopOf="@+id/btnNavigationViewClient"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/btnNavigationViewClient"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/app_background"
@@ -56,7 +62,10 @@
         app:itemHorizontalTranslationEnabled="false"
         app:itemIconTint="@color/app_menu_botton"
         app:itemTextColor="@color/app_menu_botton"
-        app:labelVisibilityMode="labeled"
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_bottom_client" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,4 +16,6 @@
     <string name="btn_frutas">Frutas</string>
     <string name="btn_granos">Granos</string>
     <string name="btn_otros">Otros</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

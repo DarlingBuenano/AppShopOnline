@@ -2,6 +2,9 @@
 <shape
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
-    <corners android:radius="@dimen/dpCorners"/>
     <solid android:color="@color/app_button_white"/>
+    <padding
+        android:top="@dimen/dpPddBtnHeader"
+        android:bottom="@dimen/dpPddBtnHeader"/>
+    <stroke android:width="0dp"/>
 </shape>
