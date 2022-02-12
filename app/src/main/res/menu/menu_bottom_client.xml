@@ -3,21 +3,26 @@
     <item
         android:id="@+id/action_home"
         android:title="@string/menu_home"
+        android:enabled="true"
         android:icon="@drawable/ic_home"/>
     <item
         android:id="@+id/action_chats"
         android:title="@string/menu_chats"
+        android:enabled="true"
         android:icon="@drawable/ic_chats"/>
     <item
         android:id="@+id/action_shopcar"
         android:title="@string/menu_carrito"
+        android:enabled="true"
         android:icon="@drawable/ic_shopcar"/>
     <item
         android:id="@+id/action_likes"
         android:title="@string/menu_favoritos"
-        android:icon="@drawable/ic_likes"/>
+        android:enabled="true"
+        android:icon="@drawable/ic_like"/>
     <item
         android:id="@+id/action_account"
         android:title="@string/menu_cuenta"
+        android:enabled="true"
         android:icon="@drawable/ic_account"/>
 </menu>

@@ -74,6 +74,7 @@ public class HomeFragment extends Fragment {
         btnOtros = root.findViewById(R.id.frghome_btnOtros);
 
         transaction = getParentFragmentManager().beginTransaction();
+        transaction.replace(R.id.frg_container_reciclerviews, frg_vegetales).commit();
 
         btnVegetales.setOnClickListener(btnMostrarFragmentProductos);
         btnFrutas.setOnClickListener(btnMostrarFragmentProductos);
@@ -90,19 +91,15 @@ public class HomeFragment extends Fragment {
             switch (view.getId()){
                 case R.id.frghome_btnVegetales:
                     transaction.replace(R.id.frg_container_reciclerviews, frg_vegetales);
-                    Toast.makeText(getContext(), "Fragment Vegetales", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.frghome_btnFrutas:
                     transaction.replace(R.id.frg_container_reciclerviews, frg_frutas);
-                    Toast.makeText(getContext(), "Fragment frutas", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.frghome_btnGranos:
                     transaction.replace(R.id.frg_container_reciclerviews, frg_granos);
-                    Toast.makeText(getContext(), "Fragment granos", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.frghome_btnOtros:
                     transaction.replace(R.id.frg_container_reciclerviews, frg_otros);
-                    Toast.makeText(getContext(), "Fragment otros", Toast.LENGTH_SHORT).show();
                     break;
             }
             transaction.commit();

@@ -1,16 +1,37 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.AppShopOnline" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+    <style name="Theme.AppShopOnline" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/app_button</item> <!--Color para los botones-->
+        <item name="colorPrimaryVariant">@color/app_font</item> <!--Color para la fuente del boton primary-->
+        <item name="colorOnPrimary">@color/app_font_button</item> <!--Color para la fuente cuando el primario esta seleccionado-->
+        <item name="colorPrimaryDark">@color/app_primary_dark</item>
+
+        <item name="colorSurface">@color/app_font</item> <!--Color para la fuente de una tarjeta-->
+        <item name="colorOnSurface">@color/app_font</item> <!--Color para la fuente-->
+
+        <item name="android:colorBackground">@color/app_background</item> <!--Color para el fondo-->
+        <item name="android:colorForeground">@color/app_font</item> <!--Color para el texto de os inputs-->
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">@dimen/spNivel0</item>
+
+        <item name="colorSecondary">@color/app_button</item> <!--Color para botones flotantes, check, radiobutton, etc-->
+        <item name="colorSecondaryVariant">@color/app_font</item> <!--Color de letra para el Secundary-->
+        <item name="colorOnSecondary">@color/app_font</item> <!--Color de letra cuando el Secundary esta seleccionado-->
+
+        <item name="android:textColor">@color/app_font</item> <!--Color de letra para textos, etc-->
+
+        <item name="colorError">@color/app_error</item>
+        <item name="colorOnError">@color/app_error_font</item>
+    </style>
+
+    <style name="style_btnLike">
+        <item name="android:textColor">@color/app_btn_like</item>
+    </style>
+
+    <style name="style_btn">
+        <item name="android:textColor">@color/app_button</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:background">@drawable/shp_btn_border_carshop</item>
+
     </style>
 </resources>

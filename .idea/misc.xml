@@ -6,25 +6,35 @@
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2890625" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/ic_kiwi.xml" value="0.2890625" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2890625" />
+        <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/ic_like.xml" value="0.2775" />
+        <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/ic_no_like.xml" value="0.2775" />
+        <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/ic_shopcar.xml" value="0.273" />
+        <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/ic_shopcar_blue.xml" value="0.273" />
+        <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/item_product.xml" value="0.2775" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/shape_button.xml" value="0.2890625" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/shape_button_header_lef.xml" value="0.33" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/shape_button_header_right.xml" value="0.2890625" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/shape_inputs.xml" value="0.2890625" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/shape_rectangle_corners.xml" value="0.2890625" />
+        <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/shp_btn_border_carshop.xml" value="0.273" />
+        <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/shp_btn_border_like.xml" value="0.273" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/shp_btn_header.xml" value="0.2775" />
+        <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/shp_btn_header_lef.xml" value="0.2775" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/shp_btn_header_lef_selected.xml" value="0.2775" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/shp_btn_header_right_selected.xml" value="0.2775" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/shp_btn_header_selected.xml" value="0.2775" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/shp_btn_lef.xml" value="0.2775" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/shp_btn_lef_selected.xml" value="0.2775" />
+        <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/shp_btn_like.xml" value="0.2775" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/shp_input_buscar.xml" value="0.2775" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/slct_inputs.xml" value="0.2890625" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/state_btn_header.xml" value="0.2775" />
+        <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/state_btn_header_lef.xml" value="0.273" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/state_btn_header_right.xml" value="0.2775" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/state_btn_lef.xml" value="0.2775" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/state_button_header.xml" value="0.2775" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/font/roboto.xml" value="0.303125" />
-        <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/activity_home.xml" value="0.33" />
+        <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/activity_home.xml" value="0.5" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/activity_login.xml" value="0.5" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/activity_welcome.xml" value="0.27291666666666664" />
@@ -43,6 +53,7 @@
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/fragment_other.xml" value="0.25885416666666666" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/fragment_statistic_busi.xml" value="0.33" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/fragment_vegetal.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/item_product.xml" value="0.42592592592592593" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/welcome.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/menu/menu_bottom_client.xml" value="0.27291666666666664" />
       </map>

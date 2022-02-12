@@ -12,7 +12,7 @@
 
 
     <dimen name="dpPddVentana">20dp</dimen>
-    <dimen name="dpPddHome">10dp</dimen>
+    <dimen name="dpPddHome">15dp</dimen>
     <dimen name="dpPddInput">15dp</dimen>
     <dimen name="dpPddInputSearch">10dp</dimen>
     <dimen name="dpPddButton">15dp</dimen>
@@ -22,6 +22,8 @@
     <dimen name="dpMrgTop">18dp</dimen>
     <dimen name="dpMrgGeneral">10dp</dimen>
 
+    <dimen name="dpRadio1">5dp</dimen>
+    <dimen name="dpRadio2">10dp</dimen>
     <dimen name="dpElevation">12dp</dimen>
     <dimen name="dpCorners">12dp</dimen>
 

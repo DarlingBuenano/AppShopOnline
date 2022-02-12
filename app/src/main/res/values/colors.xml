@@ -24,5 +24,8 @@
 
     <color name="app_menu_botton">#7C7C7C</color>
 
+    <color name="app_btn_like">#F95E5E</color>
+    <color name="app_btn_agg_carrito">#207DFF</color>
+
     <color name="app_card_empresa">#6C6C6C</color>
 </resources>
