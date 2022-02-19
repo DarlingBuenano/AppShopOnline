@@ -9,6 +9,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -16,7 +28,10 @@ import software.appshoponline.R;
 import software.appshoponline.client.adapters.Product;
 import software.appshoponline.client.adapters.ProductAdapter;
 
-public class VegetalFragment extends Fragment {
+import software.appshoponline.Constantes;
+
+public class VegetalFragment extends Fragment
+        implements Response.Listener<JSONObject>, Response.ErrorListener{
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -26,6 +41,9 @@ public class VegetalFragment extends Fragment {
     private ArrayList<Product> ListaProductos;
     private RecyclerView recycler;
     private View root;
+
+    private RequestQueue requestQueue;
+    private JsonObjectRequest jsonObjectRequest;
 
     public VegetalFragment() {
         // Required empty public constructor
@@ -56,13 +74,46 @@ public class VegetalFragment extends Fragment {
         root = inflater.inflate(R.layout.fragment_vegetal, container, false);
         recycler = root.findViewById(R.id.recyclerCardVegetales);
         recycler.setLayoutManager(new LinearLayoutManager(root.getContext(), LinearLayoutManager.VERTICAL, false));
-        this.ListaProductos = new ArrayList<Product>();
 
-        for(int i=0; i<10; i++){
-            ListaProductos.add(new Product());
-        }
-        ProductAdapter productAdapter = new ProductAdapter(ListaProductos);
-        this.recycler.setAdapter(productAdapter);
+        //Llamado al webservice
+        this.requestQueue = Volley.newRequestQueue(getContext());
+        String url = Constantes.URL_BASE + Constantes.URL_Mostrar_Productos_x_Categoria + "/1";
+        this.jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
+        this.requestQueue.add(this.jsonObjectRequest);
+
         return root;
+    }
+
+    @Override
+    public void onResponse(JSONObject response) {
+        try {
+            JSONArray jsonListaProductos = response.getJSONArray("productos");
+            this.ListaProductos = new ArrayList<Product>();
+            for(int i = 0; i < jsonListaProductos.length(); i++){
+                ListaProductos.add(new Product(
+                        Constantes.URL_BASE + jsonListaProductos.getJSONObject(i).getString("url_imagen"),
+                        jsonListaProductos.getJSONObject(i).getString("nombre"),
+                        jsonListaProductos.getJSONObject(i).getString("empresa"),
+                        Double.parseDouble(jsonListaProductos.getJSONObject(i).getString("precio")),
+                        jsonListaProductos.getJSONObject(i).getString("unidad_medida")
+                ));
+            }
+            ProductAdapter productAdapter = new ProductAdapter(ListaProductos);
+            this.recycler.setAdapter(productAdapter);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            System.out.println("Error al procesar los productos: " + e.getMessage());
+        }
+    }
+
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        Toast.makeText(root.getContext(), "No se ha podido cargar los datos", Toast.LENGTH_SHORT).show();
+        System.out.println("**********************");
+        System.out.println();
+        System.out.println("Error: " + error);
+        System.out.println();
+        System.out.println("**********************");
     }
 }

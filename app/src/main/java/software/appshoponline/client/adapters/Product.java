@@ -25,4 +25,12 @@ public class Product {
         this.Unidad_Medida = unidad_Medida;
         this.Like = like;
     }
+
+    public Product(String url, String nombre, String empresa, double precio, String unidad_Medida){
+        this.UrlImagen = url;
+        this.Nombre = nombre;
+        this.Empresa = empresa;
+        this.Precio = precio;
+        this.Unidad_Medida = unidad_Medida;
+    }
 }
