@@ -24,7 +24,8 @@
             android:text="@string/btn_vegetales"
             style="@style/style_btn_header"
             app:backgroundTint="@null"
-            android:background="@drawable/state_btn_header_lef"/>
+            android:textColor="@color/app_background"
+            android:background="@drawable/shp_btn_header_lef_selected"/>
         <Button
             android:id="@+id/frghome_btnFrutas"
             android:layout_width="wrap_content"
@@ -32,7 +33,7 @@
             android:text="@string/btn_frutas"
             style="@style/style_btn_header"
             app:backgroundTint="@null"
-            android:background="@drawable/state_btn_header"/>
+            android:background="@drawable/shp_btn_header"/>
         <Button
             android:id="@+id/frghome_btnGranos"
             android:layout_width="wrap_content"
@@ -40,7 +41,7 @@
             android:text="@string/btn_granos"
             style="@style/style_btn_header"
             app:backgroundTint="@null"
-            android:background="@drawable/state_btn_header"/>
+            android:background="@drawable/shp_btn_header"/>
         <Button
             android:id="@+id/frghome_btnOtros"
             android:layout_width="wrap_content"
@@ -48,51 +49,7 @@
             android:text="@string/btn_otros"
             style="@style/style_btn_header"
             app:backgroundTint="@null"
-            android:background="@drawable/state_btn_header_right"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/dpMrgTop"
-        android:gravity="end">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@drawable/shp_input_buscar"
-            android:paddingLeft="@dimen/dpPddInputSearch"
-            android:paddingRight="@dimen/dpPddInputSearch">
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@drawable/ic_search" />
-            <EditText
-                android:layout_width="wrap_content"
-                android:minWidth="150dp"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/spNivel0"
-                android:hint="Buscar"
-                android:textColorHint="@color/app_font"
-                android:background="@null"
-                android:padding="@dimen/dpPddInputSearch"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@drawable/shp_input_buscar"
-            android:padding="@dimen/dpPddInputSearch">
-            <ImageButton
-                android:layout_width="24dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_filter"/>
-        </LinearLayout>
+            android:background="@drawable/shp_btn_header_right"/>
 
     </LinearLayout>
 

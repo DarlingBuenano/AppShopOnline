@@ -1,15 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".client.fragments.FruitFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".client.fragments.FruitFragment"
+    android:orientation="vertical">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerCardFrutas"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end">
 
-    </androidx.recyclerview.widget.RecyclerView>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/shp_input_buscar"
+            android:paddingLeft="@dimen/dpPddInputSearch"
+            android:paddingRight="@dimen/dpPddInputSearch">
 
-</FrameLayout>
+            <ImageButton
+                android:id="@+id/frgfruit_btnBuscar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_search"/>
+
+            <EditText
+                android:id="@+id/frgfruit_txtBuscar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="Buscar"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:minWidth="150dp"
+                android:padding="@dimen/dpPddInputSearch"
+                android:textColorHint="@color/app_font"
+                android:textSize="@dimen/spNivel0" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/shp_input_buscar"
+            android:padding="@dimen/dpPddInputSearch">
+            <Spinner
+                android:id="@+id/frgfruit_spinner_filtro"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@null"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dpMrgTop">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerCardFrutas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ProgressBar
+            android:id="@+id/frgfruit_progressbar"
+            style="@android:style/Widget.DeviceDefault.Light.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

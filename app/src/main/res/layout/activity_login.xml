@@ -52,6 +52,16 @@
         android:padding="@dimen/dpPddInput"
         android:background="@drawable/shape_inputs"/>
 
+    <CheckBox
+        android:id="@+id/actlg_checkSesion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dpMrgEntreInputs"
+        android:buttonTint="@color/app_button"
+        android:textColor="@color/app_font_input"
+        android:checked="false"
+        android:text="Mantener sesion iniciada" />
+
     <Button
         android:id="@+id/actlg_btnIniciarSesion"
         android:layout_width="match_parent"

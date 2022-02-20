@@ -9,6 +9,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -25,6 +30,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import software.appshoponline.R;
+import software.appshoponline.client.HomeFragment;
 import software.appshoponline.client.adapters.Product;
 import software.appshoponline.client.adapters.ProductAdapter;
 
@@ -41,6 +47,10 @@ public class VegetalFragment extends Fragment
     private ArrayList<Product> ListaProductos;
     private RecyclerView recycler;
     private View root;
+    private ImageButton btnBuscar;
+    private EditText txtBuscar;
+    private Spinner spinner_filtro;
+    private ProgressBar progressBar;
 
     private RequestQueue requestQueue;
     private JsonObjectRequest jsonObjectRequest;
@@ -75,13 +85,40 @@ public class VegetalFragment extends Fragment
         recycler = root.findViewById(R.id.recyclerCardVegetales);
         recycler.setLayoutManager(new LinearLayoutManager(root.getContext(), LinearLayoutManager.VERTICAL, false));
 
+        progressBar = root.findViewById(R.id.frgvegetal_progressbar);
+
         //Llamado al webservice
-        this.requestQueue = Volley.newRequestQueue(getContext());
         String url = Constantes.URL_BASE + Constantes.URL_Mostrar_Productos_x_Categoria + "/1";
+        this.requestQueueGetVolley(url);
+
+        txtBuscar = root.findViewById(R.id.frgvegetal_txtBuscar);
+        btnBuscar = root.findViewById(R.id.frgvegetal_btnBuscar);
+        btnBuscar.setOnClickListener(btnBuscarProducto);
+
+        // Cargar Spinner
+        spinner_filtro = root.findViewById(R.id.frgvegetal_spinner_filtro);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                root.getContext(), R.array.spinner_filtros_cliente, android.R.layout.simple_spinner_dropdown_item);
+        spinner_filtro.setAdapter(adapter);
+
+        return root;
+    }
+
+    private View.OnClickListener btnBuscarProducto = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            String producto = txtBuscar.getText().toString();
+            String url = Constantes.URL_BASE + Constantes.URL_Buscar_Productos_x_Categoria + "/1/" + producto;
+            requestQueueGetVolley(url);
+        }
+    };
+
+    private void requestQueueGetVolley(String url){
+        this.requestQueue = Volley.newRequestQueue(getContext());
         this.jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
         this.requestQueue.add(this.jsonObjectRequest);
 
-        return root;
+        progressBar.setVisibility(View.GONE);
     }
 
     @Override
@@ -91,12 +128,13 @@ public class VegetalFragment extends Fragment
             this.ListaProductos = new ArrayList<Product>();
             for(int i = 0; i < jsonListaProductos.length(); i++){
                 ListaProductos.add(new Product(
-                        Constantes.URL_BASE + jsonListaProductos.getJSONObject(i).getString("url_imagen"),
+                        Constantes.URL_MEDIA + jsonListaProductos.getJSONObject(i).getString("url_imagen"),
                         jsonListaProductos.getJSONObject(i).getString("nombre"),
                         jsonListaProductos.getJSONObject(i).getString("empresa"),
                         Double.parseDouble(jsonListaProductos.getJSONObject(i).getString("precio")),
                         jsonListaProductos.getJSONObject(i).getString("unidad_medida")
                 ));
+                System.out.println(Constantes.URL_MEDIA + jsonListaProductos.getJSONObject(i).getString("url_imagen"));
             }
             ProductAdapter productAdapter = new ProductAdapter(ListaProductos);
             this.recycler.setAdapter(productAdapter);

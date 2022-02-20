@@ -24,8 +24,7 @@
                 android:id="@+id/imgProducto"
                 android:layout_width="125dp"
                 android:layout_height="120dp"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/colada_morada" />
+                android:layout_marginEnd="10dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
