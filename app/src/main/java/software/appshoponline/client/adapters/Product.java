@@ -29,4 +29,12 @@ public class Product {
         this.Categoria = categoria;
         this.Like = like;
     }
+
+    public Product(int id, String url, String nombre, double precio, String unidad_Medida){
+        this.Id = id;
+        this.UrlImagen = url;
+        this.Nombre = nombre;
+        this.Precio = precio;
+        this.Unidad_Medida = unidad_Medida;
+    }
 }

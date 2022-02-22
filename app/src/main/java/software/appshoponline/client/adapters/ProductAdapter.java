@@ -38,9 +38,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     private SharedPreferences pref;
     private int usuario;
     private RequestQueue requestQueue;
+    private Context context;
 
     public ProductAdapter(ArrayList<Product> listaProductos, Context context){
         this.ListaProductos = listaProductos;
+        this.context = context;
         this.pref = context.getSharedPreferences("shared_login_data", Context.MODE_PRIVATE);
         this.usuario = pref.getInt("usuario_id", 1);
         requestQueue = Volley.newRequestQueue(context);
@@ -70,7 +72,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         TextView txtPrecio_Unidad;
         ImageView imgProducto;
         Button btnLikeProducto;
+        Button btnAgregarAlCarrito;
         JsonObjectRequest jsonObjectRequest;
+        boolean isBtnLike;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -79,6 +83,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             txtPrecio_Unidad = itemView.findViewById(R.id.txtPrecioxUnidadProducto);
             imgProducto = itemView.findViewById(R.id.imgProducto);
             btnLikeProducto = itemView.findViewById(R.id.btnLikeProducto);
+            btnAgregarAlCarrito = itemView.findViewById(R.id.btnAgregarAlCarrito);
         }
 
         public void asignarInformacion(Product producto){
@@ -104,21 +109,18 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                         btnLikeProducto.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like, 0, 0, 0);
                         url = Constantes.URL_BASE + Constantes.URL_Guardar_Producto_Favorito +"/"+usuario +"/"+producto.Id;
                     }
-                    jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            try {
-                                System.out.println(response.getString("accion"));
-                            } catch (JSONException e) {
-                                System.out.println("response.getString('accion')");
-                            }
-                        }
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
+                    isBtnLike = true;
+                    jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, listener, errorListener);
+                    requestQueue.add(jsonObjectRequest);
+                }
+            });
 
-                        }
-                    });
+            btnAgregarAlCarrito.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    isBtnLike = false;
+                    String url = Constantes.URL_BASE + Constantes.URL_Agregar_Producto_al_Carrito + "/"+usuario + "/"+producto.Id;
+                    jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, listener, errorListener);
                     requestQueue.add(jsonObjectRequest);
                 }
             });
@@ -138,5 +140,31 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             });
             requestQueue.add(imageRequest);
         }
+
+        private Response.Listener<JSONObject> listener = new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    if (response.getBoolean("accion")){
+                        if (!isBtnLike){
+                            Toast.makeText(context, "Producto añadido al carrito", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    System.out.println("Error: accion = " + response.getBoolean("accion"));
+                } catch (JSONException e) {
+                    if (!isBtnLike)
+                        System.out.println("Error al guardar el producto al carrito: " + e.getMessage());
+                    else
+                        System.out.println("Error al guardar el producto a favoritos: " + e.getMessage());
+                }
+            }
+        };
+
+        private Response.ErrorListener errorListener = new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.println("Error: " + error.getMessage());
+            }
+        };
     }
 }

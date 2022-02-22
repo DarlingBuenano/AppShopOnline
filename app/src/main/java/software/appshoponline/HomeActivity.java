@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -19,10 +20,14 @@ import software.appshoponline.client.LikesFragment;
 
 public class HomeActivity extends AppCompatActivity {
 
+    private TextView txtNombreDeLaVentana;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        txtNombreDeLaVentana = findViewById(R.id.txtNombreDeLaVentana);
 
         Fragment frgHome = new HomeFragment();
         Fragment frgChats = new ChatsFragment();
@@ -43,18 +48,23 @@ public class HomeActivity extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.action_home:
                         transaction.replace(R.id.frg_container_client, frgHome);
+                        txtNombreDeLaVentana.setText("Inicio");
                         break;
                     case R.id.action_chats:
                         transaction.replace(R.id.frg_container_client, frgChats);
+                        txtNombreDeLaVentana.setText("Chats");
                         break;
                     case R.id.action_shopcar:
                         transaction.replace(R.id.frg_container_client, frgCarShop);
+                        txtNombreDeLaVentana.setText("Carrito");
                         break;
                     case R.id.action_likes:
                         transaction.replace(R.id.frg_container_client, frgLikes);
+                        txtNombreDeLaVentana.setText("Favoritos");
                         break;
                     case R.id.action_account:
                         transaction.replace(R.id.frg_container_client, frgAccount);
+                        txtNombreDeLaVentana.setText("Cuenta");
                         break;
                 }
                 transaction.commit();

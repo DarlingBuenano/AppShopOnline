@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtNombreEmpresa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre de la empresa"
+            android:textSize="@dimen/spNivel3" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/app_icon"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerListaProductosXComprar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:id="@+id/txtCostoDeEnvio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Costo de envío: $1.50"
+            android:textColor="@color/app_button"
+            android:gravity="end"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:id="@+id/txtTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Total: $10.00"
+            android:textStyle="bold"
+            android:gravity="end"
+            android:layout_marginBottom="@dimen/dpMrgTop"/>
+
+        <Button
+            android:id="@+id/btnComprarAhora"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/shape_button"
+            android:layout_gravity="center"
+            android:textSize="@dimen/spNivel1"
+            android:text="   COMPRAR AHORA   "/>
+
+    </LinearLayout>
+
+</RelativeLayout>

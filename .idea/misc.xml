@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2890625" />
+        <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/ic_disminuir.xml" value="0.2775" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/ic_kiwi.xml" value="0.2890625" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2890625" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/ic_like.xml" value="0.2775" />
@@ -18,6 +19,7 @@
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/shape_rectangle_corners.xml" value="0.2890625" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/shp_btn_border_carshop.xml" value="0.273" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/shp_btn_border_like.xml" value="0.273" />
+        <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/shp_btn_gris.xml" value="0.2775" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/shp_btn_header.xml" value="0.2775" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/shp_btn_header_lef.xml" value="0.2775" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/shp_btn_header_lef_selected.xml" value="0.2775" />
@@ -53,6 +55,8 @@
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/fragment_other.xml" value="0.33" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/fragment_statistic_busi.xml" value="0.33" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/fragment_vegetal.xml" value="0.33" />
+        <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/item_compra_prod_x_empresa.xml" value="0.5" />
+        <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/item_compra_x_empresa.xml" value="0.33" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/item_product.xml" value="0.33" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/welcome.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/menu/menu_bottom_client.xml" value="0.27291666666666664" />
