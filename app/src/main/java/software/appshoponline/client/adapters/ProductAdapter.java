@@ -1,21 +1,31 @@
 package software.appshoponline.client.adapters;
 
+import android.app.DownloadManager;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -24,10 +34,16 @@ import software.appshoponline.R;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
 
-    ArrayList<Product> ListaProductos;
+    private ArrayList<Product> ListaProductos;
+    private SharedPreferences pref;
+    private int usuario;
+    private RequestQueue requestQueue;
 
-    public ProductAdapter(ArrayList<Product> listaProductos){
+    public ProductAdapter(ArrayList<Product> listaProductos, Context context){
         this.ListaProductos = listaProductos;
+        this.pref = context.getSharedPreferences("shared_login_data", Context.MODE_PRIVATE);
+        this.usuario = pref.getInt("usuario_id", 1);
+        requestQueue = Volley.newRequestQueue(context);
     }
 
     @NonNull
@@ -53,7 +69,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         TextView txtEmpresa;
         TextView txtPrecio_Unidad;
         ImageView imgProducto;
-        RequestQueue requestQueue;
+        Button btnLikeProducto;
+        JsonObjectRequest jsonObjectRequest;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -61,8 +78,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             txtEmpresa = itemView.findViewById(R.id.txtEmpresaProducto);
             txtPrecio_Unidad = itemView.findViewById(R.id.txtPrecioxUnidadProducto);
             imgProducto = itemView.findViewById(R.id.imgProducto);
-
-            requestQueue = Volley.newRequestQueue(itemView.getContext());
+            btnLikeProducto = itemView.findViewById(R.id.btnLikeProducto);
         }
 
         public void asignarInformacion(Product producto){
@@ -70,6 +86,42 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             txtEmpresa.setText(producto.Empresa);
             String precio = String.valueOf(producto.Precio);
             txtPrecio_Unidad.setText("$ " + precio + " / " + producto.Unidad_Medida);
+
+            if (producto.Like){
+                btnLikeProducto.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like, 0, 0, 0);
+            }
+            btnLikeProducto.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String url = "";
+                    if (producto.Like){
+                        producto.Like = false;
+                        btnLikeProducto.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_no_like, 0, 0, 0);
+                        url = Constantes.URL_BASE + Constantes.URL_Eliminar_Producto_Favorito +"/"+usuario +"/"+producto.Id;
+                    }
+                    else{
+                        producto.Like = true;
+                        btnLikeProducto.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like, 0, 0, 0);
+                        url = Constantes.URL_BASE + Constantes.URL_Guardar_Producto_Favorito +"/"+usuario +"/"+producto.Id;
+                    }
+                    jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                System.out.println(response.getString("accion"));
+                            } catch (JSONException e) {
+                                System.out.println("response.getString('accion')");
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+
+                        }
+                    });
+                    requestQueue.add(jsonObjectRequest);
+                }
+            });
 
             ImageRequest imageRequest = new ImageRequest(producto.UrlImagen,
                     new Response.Listener<Bitmap>() {
@@ -84,7 +136,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                     System.out.println("Error al consultar la imagen del producto: " + producto.Nombre);
                 }
             });
-
             requestQueue.add(imageRequest);
         }
     }

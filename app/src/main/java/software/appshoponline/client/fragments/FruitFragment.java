@@ -9,6 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -33,13 +37,15 @@ public class FruitFragment extends Fragment
         implements Response.Listener<JSONObject>, Response.ErrorListener{
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
     private String mParam1;
     private String mParam2;
 
     private ArrayList<Product> ListaProductos;
     private RecyclerView recycler;
     private View root;
+    private ImageButton btnBuscar;
+    private EditText txtBuscar;
+    private Spinner spinner_filtro;
 
     private RequestQueue requestQueue;
     private JsonObjectRequest jsonObjectRequest;
@@ -75,12 +81,35 @@ public class FruitFragment extends Fragment
         recycler.setLayoutManager(new LinearLayoutManager(root.getContext(), LinearLayoutManager.VERTICAL, false));
 
         //Llamado al webservice
-        this.requestQueue = Volley.newRequestQueue(getContext());
         String url = Constantes.URL_BASE + Constantes.URL_Mostrar_Productos_x_Categoria + "/2";
-        this.jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
-        this.requestQueue.add(this.jsonObjectRequest);
+        this.requestQueueGetVolley(url);
+
+        txtBuscar = root.findViewById(R.id.frgfruit_txtBuscar);
+        btnBuscar = root.findViewById(R.id.frgfruit_btnBuscar);
+        btnBuscar.setOnClickListener(btnBuscarProducto);
+
+        // Cargar Spinner
+        spinner_filtro = root.findViewById(R.id.frgfruit_spinner_filtro);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                root.getContext(), R.array.spinner_filtros_cliente, android.R.layout.simple_spinner_dropdown_item);
+        spinner_filtro.setAdapter(adapter);
 
         return root;
+    }
+
+    private View.OnClickListener btnBuscarProducto = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            String producto = txtBuscar.getText().toString();
+            String url = Constantes.URL_BASE + Constantes.URL_Buscar_Productos_x_Categoria + "/2/" + producto;
+            requestQueueGetVolley(url);
+        }
+    };
+
+    private void requestQueueGetVolley(String url){
+        this.requestQueue = Volley.newRequestQueue(getContext());
+        this.jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
+        this.requestQueue.add(this.jsonObjectRequest);
     }
 
     @Override
@@ -89,15 +118,19 @@ public class FruitFragment extends Fragment
             JSONArray jsonListaProductos = response.getJSONArray("productos");
             this.ListaProductos = new ArrayList<Product>();
             for(int i = 0; i < jsonListaProductos.length(); i++){
+                JSONObject producto = jsonListaProductos.getJSONObject(i);
                 ListaProductos.add(new Product(
-                        Constantes.URL_BASE + jsonListaProductos.getJSONObject(i).getString("url_imagen"),
-                        jsonListaProductos.getJSONObject(i).getString("nombre"),
-                        jsonListaProductos.getJSONObject(i).getString("empresa"),
-                        Double.parseDouble(jsonListaProductos.getJSONObject(i).getString("precio")),
-                        jsonListaProductos.getJSONObject(i).getString("unidad_medida")
+                        producto.getInt("id"),
+                        Constantes.URL_MEDIA + jsonListaProductos.getJSONObject(i).getString("url_imagen"),
+                        producto.getString("nombre"),
+                        producto.getString("empresa"),
+                        producto.getDouble("precio"),
+                        producto.getString("unidad_medida"),
+                        producto.getInt("categoria"),
+                        producto.getBoolean("like")
                 ));
             }
-            ProductAdapter productAdapter = new ProductAdapter(ListaProductos);
+            ProductAdapter productAdapter = new ProductAdapter(ListaProductos, getContext());
             this.recycler.setAdapter(productAdapter);
 
         } catch (JSONException e) {

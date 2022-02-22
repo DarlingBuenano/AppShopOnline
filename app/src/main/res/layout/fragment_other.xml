@@ -22,14 +22,14 @@
             android:paddingRight="@dimen/dpPddInputSearch">
 
             <ImageButton
-                android:id="@+id/frgotrher_btnBuscar"
+                android:id="@+id/frgother_btnBuscar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@drawable/ic_search"/>
 
             <EditText
-                android:id="@+id/frgotrher_txtBuscar"
+                android:id="@+id/frgother_txtBuscar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@null"
@@ -48,37 +48,20 @@
             android:background="@drawable/shp_input_buscar"
             android:padding="@dimen/dpPddInputSearch">
             <Spinner
-                android:id="@+id/frgotrher_spinner_filtro"
+                android:id="@+id/frgother_spinner_filtro"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="@null"/>
         </LinearLayout>
 
     </LinearLayout>
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerCardOtros"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/dpMrgTop">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerCardOtros"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-        <ProgressBar
-            android:id="@+id/frgother_progressbar"
-            style="@android:style/Widget.DeviceDefault.Light.ProgressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
 </LinearLayout>

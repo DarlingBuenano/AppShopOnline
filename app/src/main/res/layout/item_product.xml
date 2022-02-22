@@ -69,14 +69,14 @@
                         style="@style/style_btnLike"
                         android:layout_width="wrap_content"
                         android:layout_height="38dp"
-                        android:paddingRight="10dp"
-                        android:paddingLeft="10dp"
                         android:background="@drawable/shp_btn_border_like"
+                        android:drawableLeft="@drawable/ic_no_like"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
                         android:text="Me gusta"
                         android:textAllCaps="false"
                         app:backgroundTint="@null"
-                        app:icon="@drawable/ic_no_like"
-                        app:iconTintMode="multiply"/>
+                        app:iconTintMode="multiply" />
 
                     <Button
                         android:id="@+id/btnAgregarAlCarrito"

@@ -38,7 +38,6 @@ import software.appshoponline.Constantes;
 
 public class VegetalFragment extends Fragment
         implements Response.Listener<JSONObject>, Response.ErrorListener{
-
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private String mParam1;
@@ -50,7 +49,6 @@ public class VegetalFragment extends Fragment
     private ImageButton btnBuscar;
     private EditText txtBuscar;
     private Spinner spinner_filtro;
-    private ProgressBar progressBar;
 
     private RequestQueue requestQueue;
     private JsonObjectRequest jsonObjectRequest;
@@ -85,8 +83,6 @@ public class VegetalFragment extends Fragment
         recycler = root.findViewById(R.id.recyclerCardVegetales);
         recycler.setLayoutManager(new LinearLayoutManager(root.getContext(), LinearLayoutManager.VERTICAL, false));
 
-        progressBar = root.findViewById(R.id.frgvegetal_progressbar);
-
         //Llamado al webservice
         String url = Constantes.URL_BASE + Constantes.URL_Mostrar_Productos_x_Categoria + "/1";
         this.requestQueueGetVolley(url);
@@ -117,8 +113,6 @@ public class VegetalFragment extends Fragment
         this.requestQueue = Volley.newRequestQueue(getContext());
         this.jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
         this.requestQueue.add(this.jsonObjectRequest);
-
-        progressBar.setVisibility(View.GONE);
     }
 
     @Override
@@ -127,16 +121,19 @@ public class VegetalFragment extends Fragment
             JSONArray jsonListaProductos = response.getJSONArray("productos");
             this.ListaProductos = new ArrayList<Product>();
             for(int i = 0; i < jsonListaProductos.length(); i++){
+                JSONObject producto = jsonListaProductos.getJSONObject(i);
                 ListaProductos.add(new Product(
+                        producto.getInt("id"),
                         Constantes.URL_MEDIA + jsonListaProductos.getJSONObject(i).getString("url_imagen"),
-                        jsonListaProductos.getJSONObject(i).getString("nombre"),
-                        jsonListaProductos.getJSONObject(i).getString("empresa"),
-                        Double.parseDouble(jsonListaProductos.getJSONObject(i).getString("precio")),
-                        jsonListaProductos.getJSONObject(i).getString("unidad_medida")
+                        producto.getString("nombre"),
+                        producto.getString("empresa"),
+                        producto.getDouble("precio"),
+                        producto.getString("unidad_medida"),
+                        producto.getInt("categoria"),
+                        producto.getBoolean("like")
                 ));
-                System.out.println(Constantes.URL_MEDIA + jsonListaProductos.getJSONObject(i).getString("url_imagen"));
             }
-            ProductAdapter productAdapter = new ProductAdapter(ListaProductos);
+            ProductAdapter productAdapter = new ProductAdapter(ListaProductos, getContext());
             this.recycler.setAdapter(productAdapter);
 
         } catch (JSONException e) {
@@ -149,9 +146,7 @@ public class VegetalFragment extends Fragment
     public void onErrorResponse(VolleyError error) {
         Toast.makeText(root.getContext(), "No se ha podido cargar los datos", Toast.LENGTH_SHORT).show();
         System.out.println("**********************");
-        System.out.println();
         System.out.println("Error: " + error);
-        System.out.println();
         System.out.println("**********************");
     }
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="fontAppName">20sp</dimen>
-    <dimen name="spNivel_basic">11sp</dimen>
-    <dimen name="spNivel0">12sp</dimen>
+    <dimen name="spNivel_basic">12sp</dimen>
+    <dimen name="spNivel0">13sp</dimen>
     <dimen name="spNivel1">14sp</dimen>
     <dimen name="spNivel2">16sp</dimen>
     <dimen name="spNivel3">18sp</dimen>
