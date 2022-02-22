@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.DrawableRes;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
@@ -38,6 +39,7 @@ public class HomeFragment extends Fragment {
     Fragment frg_frutas;
     Fragment frg_granos;
     Fragment frg_otros;
+    Bundle datos_a_enviar;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -77,6 +79,10 @@ public class HomeFragment extends Fragment {
         btnGranos = root.findViewById(R.id.frghome_btnGranos);
         btnOtros = root.findViewById(R.id.frghome_btnOtros);
 
+        datos_a_enviar = new Bundle();
+        datos_a_enviar.putString("fragment", "HomeFragment");
+        frg_vegetales.setArguments(datos_a_enviar);
+
         transaction = getParentFragmentManager().beginTransaction();
         transaction.replace(R.id.frg_container_reciclerviews, frg_vegetales).commit();
 
@@ -96,21 +102,25 @@ public class HomeFragment extends Fragment {
             switch (view.getId()){
                 case R.id.frghome_btnVegetales:
                     transaction.replace(R.id.frg_container_reciclerviews, frg_vegetales);
+                    frg_vegetales.setArguments(datos_a_enviar);
                     btnVegetales.setTextColor(getResources().getColor(R.color.app_background));
                     btnVegetales.setBackgroundResource(R.drawable.shp_btn_header_lef_selected);
                     break;
                 case R.id.frghome_btnFrutas:
                     transaction.replace(R.id.frg_container_reciclerviews, frg_frutas);
+                    frg_frutas.setArguments(datos_a_enviar);
                     btnFrutas.setTextColor(getResources().getColor(R.color.app_background));
                     btnFrutas.setBackgroundResource(R.drawable.shp_btn_header_selected);
                     break;
                 case R.id.frghome_btnGranos:
                     transaction.replace(R.id.frg_container_reciclerviews, frg_granos);
+                    frg_granos.setArguments(datos_a_enviar);
                     btnGranos.setTextColor(getResources().getColor(R.color.app_background));
                     btnGranos.setBackgroundResource(R.drawable.shp_btn_header_selected);
                     break;
                 case R.id.frghome_btnOtros:
                     transaction.replace(R.id.frg_container_reciclerviews, frg_otros);
+                    frg_otros.setArguments(datos_a_enviar);
                     btnOtros.setTextColor(getResources().getColor(R.color.app_background));
                     btnOtros.setBackgroundResource(R.drawable.shp_btn_header_right_selected);
                     break;

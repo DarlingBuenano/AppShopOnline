@@ -1,5 +1,7 @@
 package software.appshoponline.client.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -39,6 +41,10 @@ public class OtherFragment extends Fragment
     private static final String ARG_PARAM2 = "param2";
     private String mParam1;
     private String mParam2;
+    private String fragment_actual;
+    private int usuario_id;
+    private SharedPreferences pref;
+    private String url;
 
     private ArrayList<Product> ListaProductos;
     private RecyclerView recycler;
@@ -69,6 +75,10 @@ public class OtherFragment extends Fragment
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
+            fragment_actual = getArguments().getString("fragment");
+            pref = getContext().getSharedPreferences("shared_login_data", Context.MODE_PRIVATE);
+            usuario_id = pref.getInt("usuario_id", 1);
         }
     }
 
@@ -79,10 +89,6 @@ public class OtherFragment extends Fragment
         root = inflater.inflate(R.layout.fragment_other, container, false);
         recycler = root.findViewById(R.id.recyclerCardOtros);
         recycler.setLayoutManager(new LinearLayoutManager(root.getContext(), LinearLayoutManager.VERTICAL, false));
-
-        //Llamado al webservice
-        String url = Constantes.URL_BASE + Constantes.URL_Mostrar_Productos_x_Categoria + "/4";
-        this.requestQueueGetVolley(url);
 
         txtBuscar = root.findViewById(R.id.frgother_txtBuscar);
         btnBuscar = root.findViewById(R.id.frgother_btnBuscar);
@@ -97,11 +103,25 @@ public class OtherFragment extends Fragment
         return root;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        //Llamado al webservice
+        if (fragment_actual == "HomeFragment")
+            url = Constantes.URL_BASE + Constantes.URL_Mostrar_Productos_x_Categoria + "/4";
+        else if (fragment_actual == "LikesFragment")
+            url = Constantes.URL_BASE + Constantes.URL_Mostrar_Productos_Favoritos + "/"+usuario_id +"/4";
+        this.requestQueueGetVolley(url);
+    }
+
     private View.OnClickListener btnBuscarProducto = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             String producto = txtBuscar.getText().toString();
-            String url = Constantes.URL_BASE + Constantes.URL_Buscar_Productos_x_Categoria + "/4/" + producto;
+            if (fragment_actual == "HomeFragment")
+                url = Constantes.URL_BASE + Constantes.URL_Buscar_Productos_x_Categoria + "/4/" + producto;
+            else if (fragment_actual == "LikesFragment")
+                url = Constantes.URL_BASE + Constantes.URL_Buscar_Producto_Favorito_x_Categoria + "/"+usuario_id +"/4/" + producto;
             requestQueueGetVolley(url);
         }
     };

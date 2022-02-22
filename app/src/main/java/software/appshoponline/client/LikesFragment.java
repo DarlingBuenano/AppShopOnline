@@ -3,42 +3,44 @@ package software.appshoponline.client;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import software.appshoponline.R;
+import software.appshoponline.client.fragments.FruitFragment;
+import software.appshoponline.client.fragments.GrainFragment;
+import software.appshoponline.client.fragments.OtherFragment;
+import software.appshoponline.client.fragments.VegetalFragment;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link LikesFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class LikesFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private View root;
+    Button btnVegetales;
+    Button btnFrutas;
+    Button btnGranos;
+    Button btnOtros;
+    FragmentTransaction transaction;
+    Fragment frg_vegetales;
+    Fragment frg_frutas;
+    Fragment frg_granos;
+    Fragment frg_otros;
+    Bundle datos_a_enviar;
+    FragmentManager fragmentManager;
 
     public LikesFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment LikesFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static LikesFragment newInstance(String param1, String param2) {
         LikesFragment fragment = new LikesFragment();
         Bundle args = new Bundle();
@@ -60,7 +62,80 @@ public class LikesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        frg_vegetales = new VegetalFragment();
+        frg_frutas = new FruitFragment();
+        frg_granos = new GrainFragment();
+        frg_otros = new OtherFragment();
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_likes, container, false);
+        root = inflater.inflate(R.layout.fragment_likes, container, false);
+
+        btnVegetales = root.findViewById(R.id.frglikes_btnVegetales);
+        btnFrutas = root.findViewById(R.id.frglikes_btnFrutas);
+        btnGranos = root.findViewById(R.id.frglikes_btnGranos);
+        btnOtros = root.findViewById(R.id.frglikes_btnOtros);
+
+        datos_a_enviar = new Bundle();
+        datos_a_enviar.putString("fragment", "LikesFragment");
+        frg_vegetales.setArguments(datos_a_enviar);
+
+        transaction = getParentFragmentManager().beginTransaction();
+        transaction.replace(R.id.frglikes_container_reciclerviews, frg_vegetales).commit();
+
+        btnVegetales.setOnClickListener(btnMostrarFragmentProductos);
+        btnFrutas.setOnClickListener(btnMostrarFragmentProductos);
+        btnGranos.setOnClickListener(btnMostrarFragmentProductos);
+        btnOtros.setOnClickListener(btnMostrarFragmentProductos);
+
+        return  root;
+    }
+
+    private View.OnClickListener btnMostrarFragmentProductos = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            transaction = getParentFragmentManager().beginTransaction();
+            limpiarEstilos();
+            switch (view.getId()){
+                case R.id.frglikes_btnVegetales:
+                    transaction.replace(R.id.frglikes_container_reciclerviews, frg_vegetales);
+                    frg_vegetales.setArguments(datos_a_enviar);
+                    btnVegetales.setTextColor(getResources().getColor(R.color.app_background));
+                    btnVegetales.setBackgroundResource(R.drawable.shp_btn_header_lef_selected);
+                    break;
+                case R.id.frglikes_btnFrutas:
+                    transaction.replace(R.id.frglikes_container_reciclerviews, frg_frutas);
+                    frg_frutas.setArguments(datos_a_enviar);
+                    btnFrutas.setTextColor(getResources().getColor(R.color.app_background));
+                    btnFrutas.setBackgroundResource(R.drawable.shp_btn_header_selected);
+                    break;
+                case R.id.frglikes_btnGranos:
+                    transaction.replace(R.id.frglikes_container_reciclerviews, frg_granos);
+                    frg_granos.setArguments(datos_a_enviar);
+                    btnGranos.setTextColor(getResources().getColor(R.color.app_background));
+                    btnGranos.setBackgroundResource(R.drawable.shp_btn_header_selected);
+                    break;
+                case R.id.frglikes_btnOtros:
+                    transaction.replace(R.id.frglikes_container_reciclerviews, frg_otros);
+                    frg_otros.setArguments(datos_a_enviar);
+                    btnOtros.setTextColor(getResources().getColor(R.color.app_background));
+                    btnOtros.setBackgroundResource(R.drawable.shp_btn_header_right_selected);
+                    break;
+            }
+            transaction.commit();
+        }
+    };
+
+    private void limpiarEstilos(){
+        btnVegetales.setBackgroundResource(R.drawable.shp_btn_header_lef);
+        btnVegetales.setTextColor(getResources().getColor(R.color.app_font));
+
+        btnFrutas.setBackgroundResource(R.drawable.shp_btn_header);
+        btnFrutas.setTextColor(getResources().getColor(R.color.app_font));
+
+        btnGranos.setBackgroundResource(R.drawable.shp_btn_header);
+        btnGranos.setTextColor(getResources().getColor(R.color.app_font));
+
+        btnOtros.setBackgroundResource(R.drawable.shp_btn_header_right);
+        btnOtros.setTextColor(getResources().getColor(R.color.app_font));
     }
 }

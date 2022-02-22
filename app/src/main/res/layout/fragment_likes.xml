@@ -1,15 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".client.LikesFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".client.LikesFragment"
+    android:orientation="vertical">
 
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_gravity="center"
-        android:textSize="20sp"
-        android:text="Fragment Likes client" />
+        android:gravity="center"
+        android:background="@drawable/shape_rectangle_corners"
+        android:elevation="@dimen/dpElevation">
 
-</FrameLayout>
+        <Button
+            android:id="@+id/frglikes_btnVegetales"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_vegetales"
+            style="@style/style_btn_header"
+            app:backgroundTint="@null"
+            android:textColor="@color/app_background"
+            android:background="@drawable/shp_btn_header_lef_selected"/>
+        <Button
+            android:id="@+id/frglikes_btnFrutas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_frutas"
+            style="@style/style_btn_header"
+            app:backgroundTint="@null"
+            android:background="@drawable/shp_btn_header"/>
+        <Button
+            android:id="@+id/frglikes_btnGranos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_granos"
+            style="@style/style_btn_header"
+            app:backgroundTint="@null"
+            android:background="@drawable/shp_btn_header"/>
+        <Button
+            android:id="@+id/frglikes_btnOtros"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_otros"
+            style="@style/style_btn_header"
+            app:backgroundTint="@null"
+            android:background="@drawable/shp_btn_header_right"/>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frglikes_container_reciclerviews"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dpMrgTop"/>
+
+</LinearLayout>
