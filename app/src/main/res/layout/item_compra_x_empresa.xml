@@ -45,8 +45,7 @@
             android:layout_height="wrap_content"
             android:text="Total: $10.00"
             android:textStyle="bold"
-            android:gravity="end"
-            android:layout_marginBottom="@dimen/dpMrgTop"/>
+            android:gravity="end" />
 
         <Button
             android:id="@+id/btnComprarAhora"
@@ -55,6 +54,7 @@
             android:background="@drawable/shape_button"
             android:layout_gravity="center"
             android:textSize="@dimen/spNivel1"
+            android:layout_marginBottom="@dimen/dpMrgTop"
             android:text="   COMPRAR AHORA   "/>
 
     </LinearLayout>

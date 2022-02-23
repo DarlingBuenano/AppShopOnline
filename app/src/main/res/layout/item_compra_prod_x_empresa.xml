@@ -1,97 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal">
-
-    <ImageView
-        android:id="@+id/imgProducto"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginEnd="10dp"/>
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center"
-        android:layout_weight="1">
-        <TextView
-            android:id="@+id/txtNombreProducto"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imgProducto"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="10dp"/>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nombre del producto"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dpMrgGeneral"
-            android:orientation="horizontal">
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/btnDisminuirCantidad"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:background="@drawable/shp_btn_gris"
-                app:icon="@drawable/ic_disminuir"
-                android:paddingLeft="0dp"
-                android:paddingRight="0dp"
-                android:paddingTop="0dp"
-                android:paddingBottom="0dp"
-                app:backgroundTint="@null"
-                app:iconTintMode="multiply" />
             <TextView
-                android:id="@+id/txtVerCantidad"
-                android:layout_width="30dp"
-                android:layout_height="24dp"
-                android:text="1"
-                android:textStyle="bold"
-                android:textSize="@dimen/spNivel2"
-                android:layout_gravity="center"
-                android:gravity="center"/>
-            <Button
-                android:id="@+id/btnAumentarCantidad"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:background="@drawable/shp_btn_gris"
-                app:icon="@drawable/ic_aumentar"
-                android:paddingLeft="0dp"
-                android:paddingRight="0dp"
-                android:paddingTop="0dp"
-                android:paddingBottom="0dp"
-                app:backgroundTint="@null"
-                app:iconTintMode="multiply" />
+                android:id="@+id/txtNombreProducto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre del producto" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dpMrgGeneral"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btnDisminuirCantidad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shp_btn_gris"
+                    android:gravity="center"
+                    android:padding="0dp"
+                    android:src="@drawable/ic_remove"
+                    app:tint="@color/app_button_white" />
+
+                <TextView
+                    android:id="@+id/txtVerCantidad"
+                    android:layout_width="30dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textSize="@dimen/spNivel2"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/btnAumentarCantidad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shp_btn_gris"
+                    android:gravity="center"
+                    android:padding="0dp"
+                    android:src="@drawable/ic_add"
+                    app:tint="@color/app_button_white" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btnEliminarProductoDelCarrito"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/app_button_white"
+                android:gravity="center"
+                android:padding="0dp"
+                android:src="@drawable/ic_delete" />
+
+            <TextView
+                android:id="@+id/txtPrecioxCantidadProducto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$1.00"
+                android:textSize="@dimen/spNivel2" />
         </LinearLayout>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center"
-        android:gravity="center">
-
-        <Button
-            android:id="@+id/btnEliminarProductoDelCarrito"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@color/app_button_white"
-            app:icon="@drawable/ic_delete"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
-            android:paddingTop="0dp"
-            android:paddingBottom="0dp"
-            android:gravity="center"
-            app:backgroundTint="@null"
-            app:iconTintMode="multiply"
-            android:elevation="0dp" />
-        <TextView
-            android:id="@+id/txtPrecioxCantidadProducto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="$1.00"
-            android:textSize="@dimen/spNivel2"/>
-    </LinearLayout>
-
-</LinearLayout>
+</RelativeLayout>

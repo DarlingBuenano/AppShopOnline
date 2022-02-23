@@ -150,6 +150,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                             Toast.makeText(context, "Producto añadido al carrito", Toast.LENGTH_SHORT).show();
                         }
                     }
+                    else{
+                        if (!isBtnLike){
+                            Toast.makeText(context, "El producto ya habia sido añadido al carrito", Toast.LENGTH_SHORT).show();
+                        }
+                    }
                     System.out.println("Error: accion = " + response.getBoolean("accion"));
                 } catch (JSONException e) {
                     if (!isBtnLike)

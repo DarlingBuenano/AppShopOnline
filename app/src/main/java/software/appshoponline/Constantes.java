@@ -14,6 +14,7 @@ public class Constantes {
 
     public static final String URL_Agregar_Producto_al_Carrito = "/agregar-producto-al-carrito";
     public static final String URL_Mostrar_Productos_del_Carrito = "/mostrar-productos-del-carrito";
+    public static final String URL_Eliminar_Producto_del_Carrito = "/eliminar-producto-del-carrito";
 
     public static final int VOLLEY_DEFAULT_TIMEOUT = 10000;
 }

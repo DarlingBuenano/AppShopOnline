@@ -20,6 +20,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import software.appshoponline.R;
@@ -32,6 +33,10 @@ public class EmpresaAdapter extends RecyclerView.Adapter<EmpresaAdapter.ViewHold
     private RecyclerView recycler;
     private RequestQueue requestQueue;
     private Context context;
+    private View root;
+    DecimalFormat moneda;
+    float total;
+    TextView txtTotal;
 
     public EmpresaAdapter(ArrayList<Empresa> listaEmpresas, Context context){
         this.listaEmpresas = listaEmpresas;
@@ -44,12 +49,12 @@ public class EmpresaAdapter extends RecyclerView.Adapter<EmpresaAdapter.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
+        root = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_compra_x_empresa, null, false);
 
-        recycler = view.findViewById(R.id.recyclerListaProductosXComprar);
-        recycler.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false));
-        return new ViewHolder(view);
+        recycler = root.findViewById(R.id.recyclerListaProductosXComprar);
+        recycler.setLayoutManager(new LinearLayoutManager(root.getContext(), LinearLayoutManager.VERTICAL, false));
+        return new ViewHolder(root);
     }
 
     @Override
@@ -65,7 +70,6 @@ public class EmpresaAdapter extends RecyclerView.Adapter<EmpresaAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView txtNombreEmpresa;
         TextView txtCostoDeEnvio;
-        TextView txtTotal;
         Button btnComprarAhora;
 
         public ViewHolder(@NonNull View itemView) {
@@ -78,16 +82,14 @@ public class EmpresaAdapter extends RecyclerView.Adapter<EmpresaAdapter.ViewHold
 
         public void asignarInformacion(Empresa empresa){
             txtNombreEmpresa.setText(empresa.Nombre);
-            txtCostoDeEnvio.setText(empresa.Costo_envio.toString());
-            txtTotal.setText(empresa.Costo_envio.toString());
+            txtCostoDeEnvio.setText("Costo de envío: $" + empresa.Costo_envio.toString());
 
             //Asignar el otro recyclerView
             JSONArray jsonListaProductos = empresa.ProductosJson;
             ArrayList<Product> listaProductos = new ArrayList<Product>();
             for(int j = 0; j < jsonListaProductos.length(); j++){
-                JSONObject producto = null;
                 try {
-                    producto = jsonListaProductos.getJSONObject(j);
+                    JSONObject producto = jsonListaProductos.getJSONObject(j);
                     listaProductos.add( new Product(
                             producto.getInt("id"),
                             producto.getString("url_imagen"),
@@ -95,13 +97,13 @@ public class EmpresaAdapter extends RecyclerView.Adapter<EmpresaAdapter.ViewHold
                             producto.getDouble("precio"),
                             producto.getString("unidad_medida")
                     ));
-                    ProductXEmpresaAdapter productXEmpresaAdapter = new ProductXEmpresaAdapter(listaProductos, context);
-                    recycler.setAdapter(productXEmpresaAdapter);
                 } catch (JSONException e) {
                     e.printStackTrace();
                     System.out.println("Error al mostrar los productos dentro de cada empresa: " + e.getMessage());
                 }
             }
+            ProductXEmpresaAdapter productXEmpresaAdapter = new ProductXEmpresaAdapter(listaProductos, context);
+            recycler.setAdapter(productXEmpresaAdapter);
         }
     }
 }
