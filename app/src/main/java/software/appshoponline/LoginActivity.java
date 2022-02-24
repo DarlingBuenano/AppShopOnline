@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity
     }
 
     public void onClick_btnIniciarSesion(View view){
-        String url = Constantes.URL_BASE + "/iniciar-sesion/" + txtCorreo.getText().toString() + "/" + txtContrasena.getText().toString();
+        String url = Dominio.URL_WebServie + "/iniciar-sesion/" + txtCorreo.getText().toString() + "/" + txtContrasena.getText().toString();
         this.requestQueueGetVolley(url);
     }
 

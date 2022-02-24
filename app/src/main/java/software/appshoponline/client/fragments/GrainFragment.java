@@ -31,6 +31,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import software.appshoponline.Constantes;
+import software.appshoponline.Dominio;
 import software.appshoponline.R;
 import software.appshoponline.client.adapters.Product;
 import software.appshoponline.client.adapters.ProductAdapter;
@@ -108,9 +109,9 @@ public class GrainFragment extends Fragment
         super.onStart();
         //Llamado al webservice
         if (fragment_actual == "HomeFragment")
-            url = Constantes.URL_BASE + Constantes.URL_Mostrar_Productos_x_Categoria + "/3";
+            url = Dominio.URL_WebServie + Constantes.URL_Mostrar_Productos_x_Categoria + "/3";
         else if (fragment_actual == "LikesFragment")
-            url = Constantes.URL_BASE + Constantes.URL_Mostrar_Productos_Favoritos + "/"+usuario_id +"/3";
+            url = Dominio.URL_WebServie + Constantes.URL_Mostrar_Productos_Favoritos + "/"+usuario_id +"/3";
         this.requestQueueGetVolley(url);
     }
 
@@ -119,9 +120,9 @@ public class GrainFragment extends Fragment
         public void onClick(View view) {
             String producto = txtBuscar.getText().toString();
             if (fragment_actual == "HomeFragment")
-                url = Constantes.URL_BASE + Constantes.URL_Buscar_Productos_x_Categoria + "/3/" + producto;
+                url = Dominio.URL_WebServie + Constantes.URL_Buscar_Productos_x_Categoria + "/3/" + producto;
             else if (fragment_actual == "LikesFragment")
-                url = Constantes.URL_BASE + Constantes.URL_Buscar_Producto_Favorito_x_Categoria + "/"+usuario_id +"/3/" + producto;
+                url = Dominio.URL_WebServie + Constantes.URL_Buscar_Producto_Favorito_x_Categoria + "/"+usuario_id +"/3/" + producto;
             requestQueueGetVolley(url);
         }
     };
@@ -141,7 +142,7 @@ public class GrainFragment extends Fragment
                 JSONObject producto = jsonListaProductos.getJSONObject(i);
                 ListaProductos.add(new Product(
                         producto.getInt("id"),
-                        Constantes.URL_MEDIA + jsonListaProductos.getJSONObject(i).getString("url_imagen"),
+                        Dominio.URL_Media + jsonListaProductos.getJSONObject(i).getString("url_imagen"),
                         producto.getString("nombre"),
                         producto.getString("empresa"),
                         producto.getDouble("precio"),

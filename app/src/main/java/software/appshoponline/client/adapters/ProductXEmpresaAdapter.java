@@ -3,16 +3,17 @@ package software.appshoponline.client.adapters;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
@@ -30,25 +31,32 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import software.appshoponline.Constantes;
+import software.appshoponline.Dominio;
 import software.appshoponline.R;
 
-public class ProductXEmpresaAdapter extends RecyclerView.Adapter<ProductXEmpresaAdapter.ViewHolder>{
+public class ProductXEmpresaAdapter extends RecyclerView.Adapter<ProductXEmpresaAdapter.ViewHolder> {
 
     private ArrayList<Product> listaProductosXEmpresas;
     private SharedPreferences pref;
     private int usuario;
+    private String requestKey;
     private RequestQueue requestQueue;
     private JsonObjectRequest jsonObjectRequest;
     private Context context;
-    private DecimalFormat decimalFormat;
+    private DecimalFormat formatoMoneda;
+    private Bundle bundle;
+    private FragmentManager fragmentManager;
 
-    public ProductXEmpresaAdapter(ArrayList<Product> products, Context context){
+    public ProductXEmpresaAdapter(ArrayList<Product> products, Context context, FragmentManager fragmentManager, String requestKey){
         this.listaProductosXEmpresas = products;
         this.context = context;
+        this.fragmentManager = fragmentManager;
         this.pref = context.getSharedPreferences("shared_login_data", Context.MODE_PRIVATE);
         this.usuario = pref.getInt("usuario_id", 1);
+        this.requestKey = requestKey;
+        this.bundle = new Bundle();
         requestQueue = Volley.newRequestQueue(context);
-        decimalFormat = new DecimalFormat("#0.00");
+        formatoMoneda = new DecimalFormat("#0.00");
     }
 
     @NonNull
@@ -96,9 +104,9 @@ public class ProductXEmpresaAdapter extends RecyclerView.Adapter<ProductXEmpresa
             this.producto = producto;
             txtNombreProducto.setText(producto.Nombre);
             txtVerCantidad.setText(String.valueOf(cantidad));
-            txtPrecioxCantidadProducto.setText(String.valueOf(producto.Precio));
+            txtPrecioxCantidadProducto.setText("$ " + formatoMoneda.format(producto.Precio));
 
-            String url = Constantes.URL_MEDIA + producto.UrlImagen;
+            String url = Dominio.URL_Media + producto.UrlImagen;
 
             ImageRequest imageRequest = new ImageRequest(url, new Response.Listener<Bitmap>() {
                 @Override
@@ -118,7 +126,7 @@ public class ProductXEmpresaAdapter extends RecyclerView.Adapter<ProductXEmpresa
                 public void onClick(View view) {
                     if (cantidad > 1){
                         cantidad = cantidad - 1;
-                        actualizarCantidad(String.valueOf(cantidad), decimalFormat.format(cantidad * producto.Precio));
+                        actualizarCantidad(producto.Precio * -1);
                     }
                 }
             });
@@ -126,21 +134,27 @@ public class ProductXEmpresaAdapter extends RecyclerView.Adapter<ProductXEmpresa
                 @Override
                 public void onClick(View view) {
                     cantidad = cantidad + 1;
-                    actualizarCantidad(String.valueOf(cantidad), decimalFormat.format(cantidad * producto.Precio));
+                    actualizarCantidad(producto.Precio);
                 }
             });
             btnEliminarProductoDelCarrito.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    String url = Constantes.URL_BASE + Constantes.URL_Eliminar_Producto_del_Carrito +"/"+usuario +"/"+producto.Id;
+                    String url = Dominio.URL_WebServie + Constantes.URL_Eliminar_Producto_del_Carrito +"/"+usuario +"/"+producto.Id;
                     requestQueueGetVolley(url);
                 }
             });
         }
 
-        private void actualizarCantidad(String cantidad, String precioTotal){
-            txtVerCantidad.setText(cantidad);
-            txtPrecioxCantidadProducto.setText(precioTotal);
+        private void actualizarCantidad(double precio){
+            producto.Cantidad = cantidad;
+            bundle.putDouble(requestKey, precio);
+            fragmentManager.setFragmentResult(requestKey, bundle);
+
+            if (precio < 0)
+                precio = precio * -1;
+            txtVerCantidad.setText(String.valueOf(cantidad));
+            txtPrecioxCantidadProducto.setText("$ " + formatoMoneda.format(cantidad * precio));
         }
 
         private void requestQueueGetVolley(String url){
@@ -152,6 +166,7 @@ public class ProductXEmpresaAdapter extends RecyclerView.Adapter<ProductXEmpresa
         @Override
         public void onResponse(JSONObject response) {
             try {
+                // Accion eliminar
                 if(response.getBoolean("accion")){
                     listaProductosXEmpresas.remove(this.producto);
                     notifyDataSetChanged();

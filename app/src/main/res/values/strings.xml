@@ -16,7 +16,15 @@
     <string name="btn_frutas">Frutas</string>
     <string name="btn_granos">Granos</string>
     <string name="btn_otros">Otros</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
+    <!--Material AlertDialog-->
+    <string name="alert_cancelar">Cancelar</string>
+    <string name="alert_denegar">Denegar</string>
+    <string name="alert_aceptar">Aceptar</string>
+
+    <string name="title_comprar">Compra exitosa</string>
+    <string name="message_comprar">Hemos enviado tu pedido al vendedor, pronto te escribirá al chat</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 

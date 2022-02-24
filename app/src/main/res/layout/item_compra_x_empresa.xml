@@ -34,6 +34,7 @@
             android:id="@+id/txtCostoDeEnvio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/spNivel2"
             android:text="Costo de envío: $1.50"
             android:textColor="@color/app_button"
             android:gravity="end"
@@ -43,6 +44,7 @@
             android:id="@+id/txtTotal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/spNivel2"
             android:text="Total: $10.00"
             android:textStyle="bold"
             android:gravity="end" />
@@ -55,7 +57,9 @@
             android:layout_gravity="center"
             android:textSize="@dimen/spNivel1"
             android:layout_marginBottom="@dimen/dpMrgTop"
-            android:text="   COMPRAR AHORA   "/>
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:text="COMPRAR AHORA"/>
 
     </LinearLayout>
 

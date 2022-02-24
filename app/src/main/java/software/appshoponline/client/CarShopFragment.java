@@ -28,6 +28,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import software.appshoponline.Constantes;
+import software.appshoponline.Dominio;
 import software.appshoponline.R;
 import software.appshoponline.client.adapters.Empresa;
 import software.appshoponline.client.adapters.EmpresaAdapter;
@@ -90,7 +91,7 @@ public class CarShopFragment extends Fragment implements Response.Listener<JSONO
         pref = getContext().getSharedPreferences("shared_login_data", Context.MODE_PRIVATE);
         usuario_id = pref.getInt("usuario_id", 1);
 
-        url = Constantes.URL_BASE + Constantes.URL_Mostrar_Productos_del_Carrito + "/"+usuario_id;
+        url = Dominio.URL_WebServie + Constantes.URL_Mostrar_Productos_del_Carrito + "/"+usuario_id;
         requestQueueGetVolley(url);
     }
 
@@ -116,7 +117,7 @@ public class CarShopFragment extends Fragment implements Response.Listener<JSONO
                         empresa.getJSONArray("productos")
                 ));
             }
-            EmpresaAdapter empresaAdapter = new EmpresaAdapter(ListaEmpresas, getContext());
+            EmpresaAdapter empresaAdapter = new EmpresaAdapter(ListaEmpresas, getContext(), getParentFragmentManager(), this.getViewLifecycleOwner());
             this.recycler.setAdapter(empresaAdapter);
         }
         catch (JSONException e){

@@ -27,9 +27,11 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import software.appshoponline.Constantes;
+import software.appshoponline.Dominio;
 import software.appshoponline.R;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
@@ -74,7 +76,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         Button btnLikeProducto;
         Button btnAgregarAlCarrito;
         JsonObjectRequest jsonObjectRequest;
+        Product producto;
         boolean isBtnLike;
+        private DecimalFormat formatoMoneda;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -84,13 +88,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             imgProducto = itemView.findViewById(R.id.imgProducto);
             btnLikeProducto = itemView.findViewById(R.id.btnLikeProducto);
             btnAgregarAlCarrito = itemView.findViewById(R.id.btnAgregarAlCarrito);
+            formatoMoneda = new DecimalFormat("#0.00");
         }
 
         public void asignarInformacion(Product producto){
+            this.producto = producto;
             txtNombre.setText(producto.Nombre);
             txtEmpresa.setText(producto.Empresa);
-            String precio = String.valueOf(producto.Precio);
-            txtPrecio_Unidad.setText("$ " + precio + " / " + producto.Unidad_Medida);
+            txtPrecio_Unidad.setText("$ " + formatoMoneda.format(producto.Precio) + " / " + producto.Unidad_Medida);
 
             if (producto.Like){
                 btnLikeProducto.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like, 0, 0, 0);
@@ -102,12 +107,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                     if (producto.Like){
                         producto.Like = false;
                         btnLikeProducto.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_no_like, 0, 0, 0);
-                        url = Constantes.URL_BASE + Constantes.URL_Eliminar_Producto_Favorito +"/"+usuario +"/"+producto.Id;
+                        url = Dominio.URL_WebServie + Constantes.URL_Eliminar_Producto_Favorito +"/"+usuario +"/"+producto.Id;
                     }
                     else{
                         producto.Like = true;
                         btnLikeProducto.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like, 0, 0, 0);
-                        url = Constantes.URL_BASE + Constantes.URL_Guardar_Producto_Favorito +"/"+usuario +"/"+producto.Id;
+                        url = Dominio.URL_WebServie + Constantes.URL_Guardar_Producto_Favorito +"/"+usuario +"/"+producto.Id;
                     }
                     isBtnLike = true;
                     jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, listener, errorListener);
@@ -119,7 +124,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                 @Override
                 public void onClick(View view) {
                     isBtnLike = false;
-                    String url = Constantes.URL_BASE + Constantes.URL_Agregar_Producto_al_Carrito + "/"+usuario + "/"+producto.Id;
+                    String url = Dominio.URL_WebServie + Constantes.URL_Agregar_Producto_al_Carrito + "/"+usuario + "/"+producto.Id;
                     jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, listener, errorListener);
                     requestQueue.add(jsonObjectRequest);
                 }
@@ -149,13 +154,16 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                         if (!isBtnLike){
                             Toast.makeText(context, "Producto añadido al carrito", Toast.LENGTH_SHORT).show();
                         }
+                        else{
+                            ListaProductos.remove(producto);
+                            notifyDataSetChanged();
+                        }
                     }
                     else{
                         if (!isBtnLike){
                             Toast.makeText(context, "El producto ya habia sido añadido al carrito", Toast.LENGTH_SHORT).show();
                         }
                     }
-                    System.out.println("Error: accion = " + response.getBoolean("accion"));
                 } catch (JSONException e) {
                     if (!isBtnLike)
                         System.out.println("Error al guardar el producto al carrito: " + e.getMessage());
