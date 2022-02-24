@@ -171,6 +171,10 @@ public class ProductXEmpresaAdapter extends RecyclerView.Adapter<ProductXEmpresa
                     listaProductosXEmpresas.remove(this.producto);
                     notifyDataSetChanged();
                     Toast.makeText(context, "Se ha quitado un producto de la lista", Toast.LENGTH_SHORT).show();
+
+                    //Notificar al Adapter padre que se eliminó todos los items
+                    bundle.putDouble(requestKey, listaProductosXEmpresas.size());
+                    fragmentManager.setFragmentResult(requestKey, bundle);
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

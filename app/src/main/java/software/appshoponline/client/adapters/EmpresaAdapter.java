@@ -138,8 +138,17 @@ public class EmpresaAdapter extends RecyclerView.Adapter<EmpresaAdapter.ViewHold
             fragmentManager.setFragmentResultListener(empresa.Nombre, lifecycle, new FragmentResultListener() {
                 @Override
                 public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-                    total = total + result.getDouble(requestKey);
-                    txtTotal.setText("Total $ " + moneda.format(total));
+                    if (requestKey.equals(empresa.Nombre)){
+                        System.out.println("Tamaño de la lista de empresas: " + listaProductos.size());
+                        if (listaProductos.size() == 0){
+                            listaEmpresas.remove(empresa);
+                            notifyDataSetChanged();
+                        }
+                        else {
+                            total = total + result.getDouble(requestKey);
+                            txtTotal.setText("Total $ " + moneda.format(total));
+                        }
+                    }
                 }
             });
 
