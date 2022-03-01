@@ -2,7 +2,8 @@
     <string name="app_name">Agora Marketplace</string>
     <string name="app_welcome">Bienvenido a Agora MarketPlace</string>
     <string name="app_login_description">Inicia sesión y conoce todos los artículos que los emprendedores de tu ciudad ofrecen</string>
-    <string name="app_login_register">¿Aún no tienes cuenta? Regístrate aquí</string>
+    <string name="app_login_register">Regístrate aquí</string>
+    <string name="app_register_description">Regístrate como emprendedor o cliente y conoce todas las novedades que AgoraMarketPlace trae para ti.</string>
 
     <!--Menu general-->
     <string name="menu_home">Inicio</string>
@@ -10,6 +11,7 @@
     <string name="menu_carrito">Carrito</string>
     <string name="menu_favoritos">Favoritos</string>
     <string name="menu_cuenta">Cuenta</string>
+    <string name="menu_estadistica">Estadisticas</string>
 
     <!--Menu del home-->
     <string name="btn_vegetales">Vegetales</string>
@@ -26,6 +28,27 @@
     <string name="message_comprar">Hemos enviado tu pedido al vendedor, pronto te escribirá al chat</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="txt_registro_cliente">Registro de cliente</string>
+    <string name="txt_registro_empresa">Registro de emprendedor</string>
+
+    <string name="btn_registrarse">Registrarse</string>
+
+    <string name="txt_subir_foto_perfil">Suba una foto de perfil</string>
+
+    <string name="hint_nombres">Nombres *</string>
+    <string name="hint_apellidos">Apellidos *</string>
+    <string name="hint_cedula">Cédula de identidad *</string>
+    <string name="hint_ciudad">Ciudad *</string>
+    <string name="hint_direccion">Dirección de domicilio *</string>
+    <string name="hint_celular">Celular o teléfono *</string>
+    <string name="hint_correo">Correo electrónico *</string>
+    <string name="hint_contrasena">Contraseña *</string>
+    <string name="hint_foto_perfil">Foto de perfil</string>
+    <string name="hint_ruc">RUC (opcional)</string>
+    <string name="hint_nombre_empresa">Nombre de la empresa *</string>
+    <string name="hint_slogan">Slogan *</string>
+    <string name="hint_costo_envio">Costo de envío</string>
 
 
     <string-array name="spinner_filtros_cliente">

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="max_digist_correo">75</integer>
+    <integer name="max_digist_contrasena">20</integer>
+    <integer name="max_digist_nombres">50</integer>
+    <integer name="max_digist_apellidos">50</integer>
+    <integer name="max_digist_cedula">10</integer>
+    <integer name="max_digist_ruc">13</integer>
+    <integer name="max_digist_ciudad">50</integer>
+    <integer name="max_digist_direccion">180</integer>
+    <integer name="max_digist_celular">10</integer>
+    <integer name="max_digist_nombre_empresa">60</integer>
+    <integer name="max_digist_slogan">600</integer>
+</resources>

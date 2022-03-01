@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".fragments.OpcionesDeRegistro">
+
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/app_welcome"
+        android:textSize="@dimen/spNivel6" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
+        android:text="@string/app_register_description"
+        android:layout_marginTop="@dimen/dpMrgTop"/>
+
+    <Button
+        android:id="@+id/frgOpcReg_btnRegBusiness"
+        style="@style/style_btn_optregister"
+        app:backgroundTint="@null"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dpMrgTop"
+        android:text="Registrarme como emprendedor"
+        android:onClick="clickRegisterBusiness"/>
+
+    <Button
+        android:id="@+id/frgOpcReg_btnRegClient"
+        style="@style/style_btn_optregister_white"
+        app:backgroundTint="@null"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dpMrgTop"
+        android:text="Registrarme como cliente"
+        android:onClick="clickRegisterClient"/>
+
+</LinearLayout>

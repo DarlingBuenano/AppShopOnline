@@ -1,4 +1,4 @@
-package software.appshoponline.business;
+package software.appshoponline.business.fragments;
 
 import android.os.Bundle;
 

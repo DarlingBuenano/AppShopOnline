@@ -15,6 +15,7 @@
     <color name="app_button_white">#FFFFFF</color>
     <color name="app_background">#F9FAFC</color>
     <color name="app_button">#207DFF</color>
+    <color name="app_button_sky_blue">#DFECFF</color>
     <color name="app_input_tint">#004DBA</color>
     <color name="app_border_input">#207DFF</color>
     <color name="app_icon">#A0A0A0</color>
@@ -27,6 +28,13 @@
     <color name="app_btn_like">#F95E5E</color>
     <color name="app_btn_cantidad">#333333</color>
     <color name="app_btn_agg_carrito">#207DFF</color>
+
+    <color name="background_resumen_x_mes">#D0E4FF</color>
+    <color name="stroke_resumen_x_mes">#0047A8</color>
+    <color name="background_resumen_x_anio">#D0E3D5</color>
+    <color name="stroke_resumen_x_anio">#067604</color>
+    <color name="background_resumen_de_productos">#F9E6E6</color>
+    <color name="stroke_resumen_de_productos">#950101</color>
 
     <color name="app_card_empresa">#6C6C6C</color>
 </resources>

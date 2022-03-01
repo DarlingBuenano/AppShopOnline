@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="fontAppName">20sp</dimen>
-    <dimen name="spNivel_basic">12sp</dimen>
-    <dimen name="spNivel0">13sp</dimen>
-    <dimen name="spNivel1">14sp</dimen>
-    <dimen name="spNivel2">16sp</dimen>
-    <dimen name="spNivel3">18sp</dimen>
-    <dimen name="spNivel4">20sp</dimen>
-    <dimen name="spNivel5">22sp</dimen>
-    <dimen name="spNivel6">24sp</dimen>
+    <dimen name="fontAppName">22sp</dimen>
+    <dimen name="spNivel_basicResumen">11sp</dimen>
+    <dimen name="spNivel_basic">14sp</dimen>
+    <dimen name="spNivel0">14sp</dimen>
+    <dimen name="spNivel1">16sp</dimen>
+    <dimen name="spNivel2">18sp</dimen>
+    <dimen name="spNivel3">20sp</dimen>
+    <dimen name="spNivel4">22sp</dimen>
+    <dimen name="spNivel5">24sp</dimen>
+    <dimen name="spNivel6">26sp</dimen>
 
 
     <dimen name="dpPddVentana">20dp</dimen>
@@ -20,6 +21,8 @@
 
     <dimen name="dpMrgEntreInputs">18dp</dimen>
     <dimen name="dpMrgTop">18dp</dimen>
+    <dimen name="dpMrgBottomInputs">12dp</dimen>
+    <dimen name="dpMrgBottomTitle">25dp</dimen>
     <dimen name="dpMrgGeneral">10dp</dimen>
 
     <dimen name="dpRadio1">5dp</dimen>

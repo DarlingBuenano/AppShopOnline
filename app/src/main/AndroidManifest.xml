@@ -2,8 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="software.appshoponline">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -11,8 +12,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.AppShopOnline">
+        android:theme="@style/Theme.AppShopOnline"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".business.HomeBusiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterContainer"
+            android:exported="false" />
         <activity
             android:name=".HomeActivity"
             android:exported="false" />

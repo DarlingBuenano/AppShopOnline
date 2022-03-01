@@ -36,9 +36,43 @@
         <item name="android:background">@drawable/shp_btn_border_carshop</item>
     </style>
 
+    <style name="style_btn_blue">
+        <item name="android:textSize">@dimen/spNivel1</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:background">@drawable/shape_button</item>
+    </style>
+
     <style name="style_btn_header">
         <item name="android:textColor">@color/app_font</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="style_btn_optregister">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/app_button</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:textSize">@dimen/spNivel1</item>
+        <item name="android:background">@drawable/shape_button_sky_blue</item>
+    </style>
+
+    <style name="style_btn_optregister_white">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/app_font_input</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:textSize">@dimen/spNivel1</item>
+        <item name="android:background">@drawable/shape_button_white</item>
+    </style>
+
+    <style name="style_inputs">
+        <item name="android:layout_marginBottom">@dimen/dpMrgBottomInputs</item>
+        <item name="android:textColorHint">@color/app_font_input</item>
+        <item name="android:textSize">@dimen/spNivel1</item>
+        <item name="android:padding">@dimen/dpPddInput</item>
+        <item name="android:background">@drawable/shape_inputs</item>
+    </style>
+
+    <style name="style_resumen">
+        <item name="android:padding">7dp</item>
     </style>
 </resources>

@@ -15,5 +15,8 @@ public class Constantes {
     public static final String URL_Registrar_Venta_de_Productos = "/registrar-venta-de-productos";
     public static final String URL_Registrar_Detalle_de_Venta = "/registrar-detalle-de-venta";
 
+    public static final String URL_Registrar_Cliente = "/registrar-cliente";
+    public static final String URL_Registrar_Empresa = "/registrar-empresa";
+
     public static final int VOLLEY_DEFAULT_TIMEOUT = 10000;
 }

@@ -52,7 +52,9 @@ public class LoginActivity extends AppCompatActivity
     }
 
     public void onClick_btnRegistrar(View view){
-        Toast.makeText(getApplicationContext(), "Acividad de registro no implementada", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getApplicationContext(), RegisterContainer.class);
+        startActivity(intent);
+        finish();
     }
 
     private void requestQueueGetVolley(String url){
@@ -63,7 +65,7 @@ public class LoginActivity extends AppCompatActivity
 
     @Override
     public void onErrorResponse(VolleyError error) {
-        Toast.makeText(this, "No se puede conectar con el servidor", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Error al conectar con el servidor", Toast.LENGTH_SHORT).show();
     }
 
     @Override
