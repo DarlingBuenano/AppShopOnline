@@ -34,4 +34,8 @@
     <!--Cards-->
     <dimen name="dpTmFavorito">18dp</dimen>
     <dimen name="dpTmAggCarrito">18dp</dimen>
+
+    <!--Chats-->
+    <dimen name="width_img_chat">50dp</dimen>
+    <dimen name="height_img_chat">50dp</dimen>
 </resources>

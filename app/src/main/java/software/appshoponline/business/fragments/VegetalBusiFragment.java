@@ -78,6 +78,7 @@ public class VegetalBusiFragment extends Fragment implements Response.Listener<J
     private String imgNombre;
 
     private ActivityResultLauncher<Intent> mStartForResult;
+    private Uri uri;
     private View dialog_layout;
     private AlertDialog.Builder builder;
     private ImageView dialog_imgProducto;
@@ -124,29 +125,7 @@ public class VegetalBusiFragment extends Fragment implements Response.Listener<J
         btnAgregar = root.findViewById(R.id.frgvegetalbusi_btnAgregar);
         btnAgregar.setOnClickListener(btnAgregarProducto);
 
-        mStartForResult = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                new ActivityResultCallback<ActivityResult>() {
-                    @Override
-                    public void onActivityResult(ActivityResult result) {
-                        if (result.getResultCode() == Activity.RESULT_OK){
-                            Uri uri = result.getData().getData();
-                            int ultimaBarra = uri.getPath().lastIndexOf("/");
-                            imgNombre = uri.getPath().substring(ultimaBarra);
-                            try {
-                                imgBitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), uri);
-                                dialog_imgProducto.setImageBitmap(imgBitmap);
-                                imgString = Utilities.convertirBitmapAString(imgBitmap);
-                                seCambioLaFoto = true;
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                        else{
-                            Toast.makeText(getContext(), "No se ha seleccionado una imagen", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+        registrarActivityResult();
         return root;
     }
 
@@ -268,6 +247,32 @@ public class VegetalBusiFragment extends Fragment implements Response.Listener<J
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.setType("image/*");
         mStartForResult.launch(intent);
+    }
+
+    private void registrarActivityResult(){
+        mStartForResult = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == Activity.RESULT_OK){
+                            uri = result.getData().getData();
+                            int ultimaBarra = uri.getPath().lastIndexOf("/");
+                            imgNombre = uri.getPath().substring(ultimaBarra);
+                            try {
+                                imgBitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), uri);
+                                dialog_imgProducto.setImageBitmap(imgBitmap);
+                                imgString = Utilities.convertirBitmapAString(imgBitmap);
+                                seCambioLaFoto = true;
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        else{
+                            Toast.makeText(getContext(), "No se ha seleccionado una imagen", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 
     private Response.Listener<JSONObject> responseListener = new Response.Listener<JSONObject>() {

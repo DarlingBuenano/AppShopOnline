@@ -37,7 +37,6 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,7 +44,6 @@ import java.util.HashMap;
 import software.appshoponline.Constantes;
 import software.appshoponline.Dominio;
 import software.appshoponline.R;
-import software.appshoponline.Utilities;
 import software.appshoponline.client.adapters.Product;
 
 public class ProductBusiAdapter extends RecyclerView.Adapter<ProductBusiAdapter.ViewHolder> {
@@ -53,12 +51,11 @@ public class ProductBusiAdapter extends RecyclerView.Adapter<ProductBusiAdapter.
     private ArrayList<Product> ListaProductosBusi;
     private RequestQueue requestQueue;
     private Context context;
-    private ActivityResultLauncher<Intent> mStartForResult;
 
     public ProductBusiAdapter(ArrayList<Product> products, Context context){
         this.ListaProductosBusi = products;
         this.context = context;
-        requestQueue = Volley.newRequestQueue(context);
+        this.requestQueue = Volley.newRequestQueue(context);
     }
 
     @NonNull
@@ -96,7 +93,6 @@ public class ProductBusiAdapter extends RecyclerView.Adapter<ProductBusiAdapter.
         Spinner unidadesMedidas;
         Product product;
 
-        Utilities utilidades;
         String mensaje;
         String accion;
 
@@ -149,9 +145,6 @@ public class ProductBusiAdapter extends RecyclerView.Adapter<ProductBusiAdapter.
                         parametrosPost.put("nombre", dialog_txtNombreProducto.getText().toString());
                         parametrosPost.put("precio", dialog_txtPrecio.getText().toString());
                         parametrosPost.put("unidad_medida", Constantes.UNIDADES_DE_MDIDA[unidadesMedidas.getSelectedItemPosition()]);
-                        if(utilidades.seCambioLaImagen){
-                            parametrosPost.put("imagen", utilidades.imgFotoString);
-                        }
                         String url = Dominio.URL_WebServie + Constantes.URL_Actualizar_Producto_x_Empresa;
                         JSONObject jsonObject = new JSONObject(parametrosPost);
                         jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, responseListener, responseErrorListener);
@@ -213,8 +206,6 @@ public class ProductBusiAdapter extends RecyclerView.Adapter<ProductBusiAdapter.
         private View.OnClickListener clicBtnCambiarFoto = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                utilidades = new Utilities(dialog_imgProducto);
-                utilidades.cargarFotoDesdeGaleria();
             }
         };
 
@@ -224,7 +215,6 @@ public class ProductBusiAdapter extends RecyclerView.Adapter<ProductBusiAdapter.
                 try {
                     if (response.getBoolean("accion")){
                         Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
-                        utilidades.seCambioLaImagen = false;
                         if (accion.equals("Eliminar")){
                             ListaProductosBusi.remove(product);
                             notifyDataSetChanged();

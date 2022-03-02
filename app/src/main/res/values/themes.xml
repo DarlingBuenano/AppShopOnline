@@ -141,4 +141,9 @@
         <item name="android:textSize">@dimen/spNivel0</item>
         <item name="android:textAlignment">textStart</item>
     </style>
+
+    <style name="style_img_chat">
+        <item name="android:insetLeft">0dp</item>
+        <item name="android:insetTop">0dp</item>
+    </style>
 </resources>

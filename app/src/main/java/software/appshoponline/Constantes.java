@@ -34,6 +34,8 @@ public class Constantes {
 
     public static final String URL_Actualizar_Foto_Perfil = "/actualizar-foto-perfil";
 
+    public static final String URL_Mostrar_Chats_x_Cliente = "/obtener-chats-x-cliente";
+
     public static final int VOLLEY_DEFAULT_TIMEOUT = 10000;
 
     public static final String[] UNIDADES_DE_MDIDA = {"u", "lb", "g", "kg", "l", "ml", "m", "cm"};
