@@ -22,6 +22,7 @@ public class Constantes {
     public static final String URL_Buscar_Productos_x_Empresa_x_Categoria = "/buscar-productos-x-empresa-x-categoria";
     public static final String URL_Actualizar_Producto_x_Empresa = "/actualizar-producto-x-empresa";
     public static final String URL_Eliminar_Producto_x_Empresa = "/eliminar-producto-x-empresa";
+    public static final String URL_Agregar_Producto_x_Empresa = "/agregar-producto-x-empresa";
 
     public static final int VOLLEY_DEFAULT_TIMEOUT = 10000;
 
