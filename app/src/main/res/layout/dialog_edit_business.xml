@@ -1,52 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/dpPddVentana"
-    android:background="@color/app_background">
-    <TextView
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/dpMrgBottomInputs"
-        android:gravity="center_horizontal"
-        android:text="Configuración de la empresa"
-        android:textSize="@dimen/spNivel2"
-        android:fontFamily="@font/roboto_bold"/>
-    <EditText
-        android:id="@+id/dialogEmpresa_txtRUC"
-        style="@style/style_inputs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:autofillHints="phone"
-        android:hint="@string/hint_ruc"
-        android:maxLength="@integer/max_digist_ruc"
-        android:inputType="phone"/>
-    <EditText
-        android:id="@+id/dialogEmpresa_txtNombreEmpresa"
-        style="@style/style_inputs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:autofillHints="name"
-        android:hint="@string/hint_nombre_empresa"
-        android:maxLength="@integer/max_digist_nombre_empresa"
-        android:inputType="text"/>
-    <EditText
-        android:id="@+id/dialogEmpresa_txtSlogan"
-        style="@style/style_inputs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:autofillHints="name"
-        android:hint="@string/hint_slogan"
-        android:maxLength="@integer/max_digist_slogan"
-        android:inputType="textAutoCorrect|textAutoComplete"/>
-    <EditText
-        android:id="@+id/dialogEmpresa_txtCostoEnvio"
-        style="@style/style_inputs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/hint_costo_envio"
-        android:maxLength="@integer/max_digist_slogan"
-        android:inputType="numberDecimal"/>
-</LinearLayout>
+        android:padding="@dimen/dpPddVentana"
+        android:background="@color/app_background">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dpMrgBottomTitle"
+            android:gravity="center_horizontal"
+            android:text="Configuración de la empresa"
+            android:textSize="@dimen/spNivel2"
+            android:fontFamily="@font/roboto_bold"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ruc:"/>
+        <EditText
+            android:id="@+id/dialogEmpresa_txtRUC"
+            style="@style/style_inputs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="phone"
+            android:hint="@string/hint_ruc"
+            android:maxLength="@integer/max_digist_ruc"
+            android:inputType="phone"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre de la empresa:"/>
+        <EditText
+            android:id="@+id/dialogEmpresa_txtNombreEmpresa"
+            style="@style/style_inputs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="name"
+            android:hint="@string/hint_nombre_empresa"
+            android:maxLength="@integer/max_digist_nombre_empresa"
+            android:inputType="text"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Slogan:"/>
+        <EditText
+            android:id="@+id/dialogEmpresa_txtSlogan"
+            style="@style/style_inputs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="name"
+            android:hint="@string/hint_slogan"
+            android:maxLength="@integer/max_digist_slogan"
+            android:inputType="textAutoCorrect|textAutoComplete"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Costo de envío:"/>
+        <EditText
+            android:id="@+id/dialogEmpresa_txtCostoEnvio"
+            style="@style/style_inputs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_costo_envio"
+            android:maxLength="@integer/max_digist_slogan"
+            android:inputType="numberDecimal"/>
+    </LinearLayout>
+</ScrollView>

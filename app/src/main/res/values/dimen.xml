@@ -24,6 +24,7 @@
     <dimen name="dpMrgBottomInputs">12dp</dimen>
     <dimen name="dpMrgBottomTitle">25dp</dimen>
     <dimen name="dpMrgGeneral">10dp</dimen>
+    <dimen name="dpMrgBottomForm">20dp</dimen>
 
     <dimen name="dpRadio1">5dp</dimen>
     <dimen name="dpRadio2">10dp</dimen>

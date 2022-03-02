@@ -24,7 +24,7 @@
             android:textAlignment="center"
             android:fontFamily="@font/roboto_bold"
             android:textSize="@dimen/spNivel3"
-            android:text="Marisco y Encebollados Petita"/>
+            android:text="Empresa"/>
         <TextView
             android:id="@+id/frgaccount_txtSlogan"
             android:layout_width="match_parent"
@@ -32,14 +32,14 @@
             android:layout_marginBottom="@dimen/dpMrgTop"
             android:textAlignment="center"
             android:textSize="@dimen/spNivel1"
-            android:text="Llevando el gusto a tu paladar"/>
+            android:text="Slogan"/>
         <TextView
             android:id="@+id/frgaccount_txtNombresUsuario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:textSize="@dimen/spNivel2"
-            android:text="Darlyn Omar"/>
+            android:text="Nombres"/>
         <TextView
             android:id="@+id/frgaccount_txtApellidosUsuario"
             android:layout_width="match_parent"
@@ -47,7 +47,7 @@
             android:layout_marginBottom="@dimen/dpMrgTop"
             android:textAlignment="center"
             android:textSize="@dimen/spNivel2"
-            android:text="Buenaño Vera"/>
+            android:text="Apellidos"/>
         <Button
             android:id="@+id/frgaccount_btnCambiarFotoPerfil"
             style="@style/style_btnAccount"

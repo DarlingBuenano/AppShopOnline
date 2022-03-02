@@ -31,6 +31,8 @@ public class Constantes {
 
     public static final String URL_Obtener_Cuenta_Empresa = "/obtener-cuenta-empresa";
 
+    public static final String URL_Actualizar_Foto_Perfil = "/actualizar-foto-perfil";
+
     public static final int VOLLEY_DEFAULT_TIMEOUT = 10000;
 
     public static final String[] UNIDADES_DE_MDIDA = {"u", "lb", "g", "kg", "l", "ml", "m", "cm"};
