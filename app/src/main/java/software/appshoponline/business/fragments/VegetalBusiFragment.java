@@ -218,17 +218,26 @@ public class VegetalBusiFragment extends Fragment implements Response.Listener<J
         builder.setPositiveButton(R.string.dialog_aceptar, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                HashMap<String, String> parametrosPost = new HashMap<>();
-                parametrosPost.put("empresa_id", String.valueOf(pref.getInt("empresa_id", 0)));
-                parametrosPost.put("categoria_id", "1");
-                parametrosPost.put("nombre", dialog_txtNombreProducto.getText().toString());
-                parametrosPost.put("precio", dialog_txtPrecio.getText().toString());
-                parametrosPost.put("unidad_medida", Constantes.UNIDADES_DE_MDIDA[unidadesMedidas.getSelectedItemPosition()]);
-                parametrosPost.put("imagen", imgString);
-                String url = Dominio.URL_WebServie + Constantes.URL_Agregar_Producto_x_Empresa;
-                JSONObject jsonObject = new JSONObject(parametrosPost);
-                jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, responseListener, responseErrorListener);
-                requestQueue.add(jsonObjectRequest);
+                //validar campos
+                if (seCambioLaFoto &&
+                        dialog_txtNombreProducto.getText().toString()!="" &&
+                        dialog_txtPrecio.getText().toString()!=""){
+                    HashMap<String, String> parametrosPost = new HashMap<>();
+                    parametrosPost.put("empresa_id", String.valueOf(pref.getInt("empresa_id", 0)));
+                    parametrosPost.put("categoria_id", "1");
+                    parametrosPost.put("nombre", dialog_txtNombreProducto.getText().toString());
+                    parametrosPost.put("precio", dialog_txtPrecio.getText().toString());
+                    parametrosPost.put("unidad_medida", Constantes.UNIDADES_DE_MDIDA[unidadesMedidas.getSelectedItemPosition()]);
+                    parametrosPost.put("imagen", imgString);
+                    String url = Dominio.URL_WebServie + Constantes.URL_Agregar_Producto_x_Empresa;
+                    JSONObject jsonObject = new JSONObject(parametrosPost);
+                    jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, responseListener, responseErrorListener);
+                    requestQueue.add(jsonObjectRequest);
+                }
+                else{
+                    Toast.makeText(getContext(), "Faltan campos por llenar", Toast.LENGTH_SHORT).show();
+                    dialogInterface.cancel();
+                }
             }
         });
         builder.create().show();
