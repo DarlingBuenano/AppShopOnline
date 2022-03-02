@@ -10,6 +10,8 @@ import android.os.Handler;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
+import software.appshoponline.business.HomeBusiActivity;
+
 public class WelcomeActivity extends AppCompatActivity {
 
     SharedPreferences pref;
@@ -32,8 +34,11 @@ public class WelcomeActivity extends AppCompatActivity {
 
                 Boolean sesion = pref.getBoolean("sesion", false);
                 Intent intent;
-                if(sesion){
-                    intent = new Intent(getApplicationContext(), HomeActivity.class);
+                if (sesion){
+                    if (pref.getInt("empresa_id", 0) == 0)
+                        intent = new Intent(getApplicationContext(), HomeActivity.class);
+                    else
+                        intent = new Intent(getApplicationContext(), HomeBusiActivity.class);
                 }
                 else{
                     intent = new Intent(getApplicationContext(), LoginActivity.class);

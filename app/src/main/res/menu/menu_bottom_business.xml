@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/action_home"
+        android:id="@+id/action_homebusi"
         android:title="@string/menu_home"
         android:enabled="true"
         android:icon="@drawable/ic_home"/>
     <item
-        android:id="@+id/action_chats"
+        android:id="@+id/action_chatsbusi"
         android:title="@string/menu_chats"
         android:enabled="true"
         android:icon="@drawable/ic_chats"/>
     <item
-        android:id="@+id/action_likes"
+        android:id="@+id/action_statisticbusi"
         android:title="@string/menu_estadistica"
         android:enabled="true"
         android:icon="@drawable/ic_statistic"/>
     <item
-        android:id="@+id/action_account"
+        android:id="@+id/action_accountbusi"
         android:title="@string/menu_cuenta"
         android:enabled="true"
         android:icon="@drawable/ic_account"/>

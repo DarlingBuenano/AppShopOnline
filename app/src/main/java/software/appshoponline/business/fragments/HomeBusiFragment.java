@@ -3,42 +3,36 @@ package software.appshoponline.business.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import software.appshoponline.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HomeBusiFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class HomeBusiFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private View root;
+    Button btnVegetalesBusi;
+    Button btnFrutasBusi;
+    Button btnGranosBusi;
+    Button btnOtrosBusi;
+    FragmentTransaction transaction;
+    Fragment frg_vegetalesBusi;
+    Fragment frg_frutasBusi;
+    Fragment frg_granosBusi;
+    Fragment frg_otrosBusi;
 
     public HomeBusiFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment HomeBusiFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static HomeBusiFragment newInstance(String param1, String param2) {
         HomeBusiFragment fragment = new HomeBusiFragment();
         Bundle args = new Bundle();
@@ -60,7 +54,72 @@ public class HomeBusiFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home_busi, container, false);
+        frg_vegetalesBusi = new VegetalBusiFragment();
+        frg_frutasBusi = new FruitBusiFragment();
+        frg_granosBusi = new GrainBusiFragment();
+        frg_otrosBusi = new OtherBusiFragment();
+
+        root = inflater.inflate(R.layout.fragment_home_busi, container, false);
+
+        btnVegetalesBusi = root.findViewById(R.id.frghomebusi_btnVegetales);
+        btnFrutasBusi = root.findViewById(R.id.frghomebusi_btnFrutas);
+        btnGranosBusi = root.findViewById(R.id.frghomebusi_btnGranos);
+        btnOtrosBusi = root.findViewById(R.id.frghomebusi_btnOtros);
+
+        transaction = getParentFragmentManager().beginTransaction();
+        transaction.replace(R.id.frghomebusi_container_fragments, frg_vegetalesBusi);
+        transaction.commit();
+
+        btnVegetalesBusi.setOnClickListener(btnMostrarFragmentProductos);
+        btnFrutasBusi.setOnClickListener(btnMostrarFragmentProductos);
+        btnGranosBusi.setOnClickListener(btnMostrarFragmentProductos);
+        btnOtrosBusi.setOnClickListener(btnMostrarFragmentProductos);
+
+        return root;
+    }
+
+    private View.OnClickListener btnMostrarFragmentProductos = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            transaction = getParentFragmentManager().beginTransaction();
+            limpiarEstilos();
+            switch (view.getId()){
+                case R.id.frghomebusi_btnVegetales:
+                    transaction.replace(R.id.frghomebusi_container_fragments, frg_vegetalesBusi);
+                    btnVegetalesBusi.setTextColor(getResources().getColor(R.color.app_background));
+                    btnVegetalesBusi.setBackgroundResource(R.drawable.shp_btn_header_lef_selected);
+                    break;
+                case R.id.frghomebusi_btnFrutas:
+                    transaction.replace(R.id.frghomebusi_container_fragments, frg_frutasBusi);
+                    btnFrutasBusi.setTextColor(getResources().getColor(R.color.app_background));
+                    btnFrutasBusi.setBackgroundResource(R.drawable.shp_btn_header_selected);
+                    break;
+                case R.id.frghomebusi_btnGranos:
+                    transaction.replace(R.id.frghomebusi_container_fragments, frg_granosBusi);
+                    btnGranosBusi.setTextColor(getResources().getColor(R.color.app_background));
+                    btnGranosBusi.setBackgroundResource(R.drawable.shp_btn_header_selected);
+                    break;
+                case R.id.frghomebusi_btnOtros:
+                    transaction.replace(R.id.frghomebusi_container_fragments, frg_otrosBusi);
+                    btnOtrosBusi.setTextColor(getResources().getColor(R.color.app_background));
+                    btnOtrosBusi.setBackgroundResource(R.drawable.shp_btn_header_right_selected);
+                    break;
+            }
+            transaction.commit();
+        }
+    };
+
+    private void limpiarEstilos(){
+        btnVegetalesBusi.setBackgroundResource(R.drawable.shp_btn_header_lef);
+        btnVegetalesBusi.setTextColor(getResources().getColor(R.color.app_font));
+
+        btnFrutasBusi.setBackgroundResource(R.drawable.shp_btn_header);
+        btnFrutasBusi.setTextColor(getResources().getColor(R.color.app_font));
+
+        btnGranosBusi.setBackgroundResource(R.drawable.shp_btn_header);
+        btnGranosBusi.setTextColor(getResources().getColor(R.color.app_font));
+
+        btnOtrosBusi.setBackgroundResource(R.drawable.shp_btn_header_right);
+        btnOtrosBusi.setTextColor(getResources().getColor(R.color.app_font));
     }
 }

@@ -1,5 +1,6 @@
 package software.appshoponline;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -232,6 +233,8 @@ public class RegisterContainer extends AppCompatActivity implements Response.Lis
                     finish();
                 }
                 else{
+                    editor.putInt("empresa_id", response.getInt("empresa"));
+                    editor.apply();
                     Intent intent = new Intent(getApplicationContext(), HomeBusiActivity.class);
                     startActivity(intent);
                     finish();

@@ -50,6 +50,10 @@
     <string name="hint_slogan">Slogan *</string>
     <string name="hint_costo_envio">Costo de envío</string>
 
+    <string name="dialog_aceptar">Aceptar</string>
+    <string name="dialog_cancelar">Cancelar</string>
+    <string name="dialog_denegar">Denegar</string>
+
 
     <string-array name="spinner_filtros_cliente">
         <item>Recientes</item>
@@ -58,5 +62,16 @@
         <item>Más caro</item>
         <item>Ordenar AZ</item>
         <item>Ordenar ZA</item>
+    </string-array>
+
+    <string-array name="spinner_unidades_de_medidas">
+        <item>unidad (u)</item>
+        <item>libra (lb)</item>
+        <item>gramo (g)</item>
+        <item>kilogramo (kg)</item>
+        <item>litro (l)</item>
+        <item>mililitro (ml)</item>
+        <item>metro (m)</item>
+        <item>centímetro (cm)</item>
     </string-array>
 </resources>

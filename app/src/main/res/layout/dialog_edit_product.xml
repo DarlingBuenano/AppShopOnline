@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/dpPddVentana"
+    android:background="@color/app_background"
+    android:gravity="center_horizontal">
+
+    <ImageView
+        android:id="@+id/dialog_imgProducto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="100dp"
+        android:layout_marginBottom="@dimen/dpMrgGeneral"/>
+    <Button
+        android:id="@+id/dialog_btnCambiarImagen"
+        style="@style/style_btn_optregister_white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dpMrgGeneral"
+        android:text="Cambiar foto del producto"
+        app:backgroundTint="@null"
+        app:icon="@drawable/ic_camera"
+        app:iconTint="@color/app_button"/>
+    <EditText
+        style="@style/style_inputs"
+        android:id="@+id/dialog_txtNombreProducto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nombre del producto"
+        android:inputType="textPersonName"/>
+    <EditText
+        style="@style/style_inputs"
+        android:id="@+id/dialog_txtPrecio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Precio"
+        android:inputType="numberDecimal"/>
+
+    <Spinner
+        android:id="@+id/dialog_spinnerUnidadMedida"
+        style="@style/style_spinners"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dpMrgBottomTitle"
+        android:popupElevation="0dp" />
+
+</LinearLayout>

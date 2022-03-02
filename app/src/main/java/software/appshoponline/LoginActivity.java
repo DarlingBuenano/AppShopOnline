@@ -21,6 +21,8 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import software.appshoponline.business.HomeBusiActivity;
+
 public class LoginActivity extends AppCompatActivity
         implements Response.Listener<JSONObject>, Response.ErrorListener{
 
@@ -75,10 +77,22 @@ public class LoginActivity extends AppCompatActivity
                 if(checkSesion.isChecked()){
                     editor.putBoolean("sesion", true);
                 }
+
                 editor.putInt("usuario_id", response.getInt("usuario"));
                 editor.apply();
-                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+
+                Intent intent;
+
+                if (response.getInt("rol") == 1){
+                    intent = new Intent(getApplicationContext(), HomeActivity.class);
+                }
+                else{
+                    editor.putInt("empresa_id", response.getInt("empresa"));
+                    editor.apply();
+                    intent = new Intent(getApplicationContext(), HomeBusiActivity.class);
+                }
                 startActivity(intent);
+                finish();
             }
             else {
                 Toast.makeText(this, response.getString("mensaje"), Toast.LENGTH_SHORT).show();

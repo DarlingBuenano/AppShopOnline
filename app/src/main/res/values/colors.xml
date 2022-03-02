@@ -20,6 +20,8 @@
     <color name="app_border_input">#207DFF</color>
     <color name="app_icon">#A0A0A0</color>
     <color name="app_error">#F44336</color>
+    <color name="app_edit">#1D9734</color>
+    <color name="app_delete">#de2e11</color>
     <color name="app_error_font">#F44336</color>
     <color name="app_primary_dark">#A5A5A5</color>
 

@@ -8,118 +8,118 @@ android:layout_height="match_parent"
 android:orientation="vertical"
 tools:context=".business.fragments.HomeBusiFragment">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/dpMrgTop"
-    android:orientation="horizontal">
     <LinearLayout
-        style="@style/style_resumen"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:background="@drawable/shape_vendidos_x_mes">
-        <TextView
+        android:layout_marginBottom="@dimen/dpMrgTop"
+        android:orientation="horizontal">
+        <LinearLayout
+            style="@style/style_resumen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/spNivel_basicResumen"
-            android:text="Vendidos este mes"/>
-        <TextView
-            android:id="@+id/actHomeBusi_txtVendidosAlMes"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="@drawable/shape_vendidos_x_mes">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/spNivel_basicResumen"
+                android:text="Vendidos este mes"/>
+            <TextView
+                android:id="@+id/actHomeBusi_txtVendidosAlMes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/spNivel4"
+                android:textColor="@color/stroke_resumen_x_mes"
+                android:text="$00,00"/>
+        </LinearLayout>
+        <LinearLayout
+            style="@style/style_resumen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/spNivel4"
-            android:textColor="@color/stroke_resumen_x_mes"
-            android:text="$00,00"/>
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/shape_vendidos_x_anio">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/spNivel_basicResumen"
+                android:text="Vendidos este año"/>
+            <TextView
+                android:id="@+id/actHomeBusi_txtVendidosAlAnio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/spNivel4"
+                android:textColor="@color/stroke_resumen_x_anio"
+                android:text="$00,00"/>
+        </LinearLayout>
+        <LinearLayout
+            style="@style/style_resumen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="@drawable/shape_productos_disponibles">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/spNivel_basicResumen"
+                android:text="Productos disponibles"/>
+            <TextView
+                android:id="@+id/actHomeBusi_txtProductosDisponibles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/spNivel4"
+                android:textColor="@color/stroke_resumen_de_productos"
+                android:text="# 0"/>
+        </LinearLayout>
     </LinearLayout>
     <LinearLayout
-        style="@style/style_resumen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:background="@drawable/shape_vendidos_x_anio">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/spNivel_basicResumen"
-            android:text="Vendidos este año"/>
-        <TextView
-            android:id="@+id/actHomeBusi_txtVendidosAlAnio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/spNivel4"
-            android:textColor="@color/stroke_resumen_x_anio"
-            android:text="$00,00"/>
-    </LinearLayout>
-    <LinearLayout
-        style="@style/style_resumen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:background="@drawable/shape_productos_disponibles">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/spNivel_basicResumen"
-            android:text="Productos disponibles"/>
-        <TextView
-            android:id="@+id/actHomeBusi_txtProductosDisponibles"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/spNivel4"
-            android:textColor="@color/stroke_resumen_de_productos"
-            android:text="# 0"/>
-    </LinearLayout>
-</LinearLayout>
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/dpMrgTop"
-    android:orientation="horizontal"
-    android:layout_gravity="center"
-    android:gravity="center"
-    android:background="@drawable/shape_rectangle_corners"
-    android:elevation="@dimen/dpElevation">
+        android:layout_marginBottom="@dimen/dpMrgTop"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@drawable/shape_rectangle_corners"
+        android:elevation="@dimen/dpElevation">
 
-    <Button
-        android:id="@+id/frghomebusi_btnVegetales"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_vegetales"
-        style="@style/style_btn_header"
-        app:backgroundTint="@null"
-        android:textColor="@color/app_background"
-        android:background="@drawable/shp_btn_header_lef_selected"/>
-    <Button
-        android:id="@+id/frghomebusi_btnFrutas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_frutas"
-        style="@style/style_btn_header"
-        app:backgroundTint="@null"
-        android:background="@drawable/shp_btn_header"/>
-    <Button
-        android:id="@+id/frghomebusi_btnGranos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_granos"
-        style="@style/style_btn_header"
-        app:backgroundTint="@null"
-        android:background="@drawable/shp_btn_header"/>
-    <Button
-        android:id="@+id/frghomebusi_btnOtros"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_otros"
-        style="@style/style_btn_header"
-        app:backgroundTint="@null"
-        android:background="@drawable/shp_btn_header_right"/>
-</LinearLayout>
+        <Button
+            android:id="@+id/frghomebusi_btnVegetales"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_vegetales"
+            style="@style/style_btn_header"
+            app:backgroundTint="@null"
+            android:textColor="@color/app_background"
+            android:background="@drawable/shp_btn_header_lef_selected"/>
+        <Button
+            android:id="@+id/frghomebusi_btnFrutas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_frutas"
+            style="@style/style_btn_header"
+            app:backgroundTint="@null"
+            android:background="@drawable/shp_btn_header"/>
+        <Button
+            android:id="@+id/frghomebusi_btnGranos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_granos"
+            style="@style/style_btn_header"
+            app:backgroundTint="@null"
+            android:background="@drawable/shp_btn_header"/>
+        <Button
+            android:id="@+id/frghomebusi_btnOtros"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_otros"
+            style="@style/style_btn_header"
+            app:backgroundTint="@null"
+            android:background="@drawable/shp_btn_header_right"/>
+    </LinearLayout>
     <FrameLayout
         android:id="@+id/frghomebusi_container_fragments"
         android:layout_width="match_parent"
