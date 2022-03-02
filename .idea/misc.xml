@@ -60,7 +60,9 @@
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/fragment_chats.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/fragment_chats_busi.xml" value="0.33" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/fragment_fruit.xml" value="0.25885416666666666" />
+        <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/fragment_fruit_busi.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/fragment_grain.xml" value="0.25885416666666666" />
+        <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/fragment_grain_busi.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/fragment_header.xml" value="0.33" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/fragment_header_.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/fragment_home.xml" value="0.33" />
@@ -68,6 +70,7 @@
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/fragment_likes.xml" value="0.33" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/fragment_opciones_de_registro.xml" value="0.33" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/fragment_other.xml" value="0.33" />
+        <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/fragment_other_busi.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/fragment_register_business.xml" value="0.33" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/fragment_register_client.xml" value="0.33" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/fragment_statistic_busi.xml" value="0.33" />

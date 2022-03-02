@@ -137,6 +137,7 @@ public class VegetalBusiFragment extends Fragment implements Response.Listener<J
                                 imgBitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), uri);
                                 dialog_imgProducto.setImageBitmap(imgBitmap);
                                 imgString = Utilities.convertirBitmapAString(imgBitmap);
+                                seCambioLaFoto = true;
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -283,7 +284,7 @@ public class VegetalBusiFragment extends Fragment implements Response.Listener<J
         }
     };
 
-    public Response.ErrorListener responseErrorListener = new Response.ErrorListener() {
+    private Response.ErrorListener responseErrorListener = new Response.ErrorListener() {
         @Override
         public void onErrorResponse(VolleyError error) {
             Toast.makeText(getContext(), "Ocurrió un error con el servidor", Toast.LENGTH_SHORT).show();

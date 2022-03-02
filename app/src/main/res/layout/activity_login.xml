@@ -1,99 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".LoginActivity"
-    android:padding="@dimen/dpPddVentana"
-    android:orientation="vertical">
-
-    <TextView
-        android:layout_width="210dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:fontFamily="@font/roboto"
-        android:text="@string/app_welcome"
-        android:textSize="@dimen/spNivel6" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto"
-        android:text="@string/app_login_description"
-        android:layout_marginTop="@dimen/dpMrgTop"/>
-
-    <EditText
-        android:id="@+id/actlg_txtCorreo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:ems="10"
-        android:hint="Correo electrónico"
-        android:inputType="textEmailAddress"
-        android:textColorHint="@color/app_font_input"
-        android:textSize="@dimen/spNivel1"
-        android:fontFamily="@font/roboto"
-        android:padding="@dimen/dpPddInput"
-        android:background="@drawable/shape_inputs"/>
-
-    <EditText
-        android:id="@+id/actlg_txtContrasena"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dpMrgEntreInputs"
-        android:ems="10"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-        android:textColorHint="@color/app_font_input"
-        android:textSize="@dimen/spNivel1"
-        android:fontFamily="@font/roboto"
-        android:padding="@dimen/dpPddInput"
-        android:background="@drawable/shape_inputs"/>
-
-    <CheckBox
-        android:id="@+id/actlg_checkSesion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dpMrgEntreInputs"
-        android:buttonTint="@color/app_button"
-        android:textColor="@color/app_font_input"
-        android:checked="false"
-        android:text="Mantener sesion iniciada" />
-
-    <Button
-        android:id="@+id/actlg_btnIniciarSesion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dpMrgEntreInputs"
-        android:background="@drawable/shape_button"
-        android:text="Iniciar sesión"
-        android:textAllCaps="false"
-        android:textSize="@dimen/spNivel2"
-        android:fontFamily="@font/roboto"
-        android:onClick="onClick_btnIniciarSesion"/>
-
+    android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dpMrgEntreInputs"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
+        tools:context=".LoginActivity"
+        android:padding="@dimen/dpPddVentana"
+        android:orientation="vertical">
+
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="210dp"
             android:layout_height="wrap_content"
-            android:text="¿Aún no tienes cuenta? "
-            android:textAlignment="center"
-            android:linksClickable="true"/>
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/roboto"
+            android:text="@string/app_welcome"
+            android:textSize="@dimen/spNivel6" />
+
         <TextView
-            android:id="@+id/actlg_btnLinkRegistrar"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/app_login_register"
-            android:textAlignment="center"
-            android:linksClickable="true"
-            android:textColor="@color/app_button"
-            android:onClick="onClick_btnRegistrar"/>
+            android:fontFamily="@font/roboto"
+            android:text="@string/app_login_description"
+            android:layout_marginTop="@dimen/dpMrgTop"/>
+
+        <EditText
+            android:id="@+id/actlg_txtCorreo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:ems="10"
+            android:hint="Correo electrónico"
+            android:inputType="textEmailAddress"
+            android:textColorHint="@color/app_font_input"
+            android:textSize="@dimen/spNivel1"
+            android:fontFamily="@font/roboto"
+            android:padding="@dimen/dpPddInput"
+            android:background="@drawable/shape_inputs"/>
+
+        <EditText
+            android:id="@+id/actlg_txtContrasena"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dpMrgEntreInputs"
+            android:ems="10"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:textColorHint="@color/app_font_input"
+            android:textSize="@dimen/spNivel1"
+            android:fontFamily="@font/roboto"
+            android:padding="@dimen/dpPddInput"
+            android:background="@drawable/shape_inputs"/>
+
+        <CheckBox
+            android:id="@+id/actlg_checkSesion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dpMrgEntreInputs"
+            android:buttonTint="@color/app_button"
+            android:textColor="@color/app_font_input"
+            android:checked="false"
+            android:text="Mantener sesion iniciada" />
+
+        <Button
+            android:id="@+id/actlg_btnIniciarSesion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dpMrgEntreInputs"
+            android:background="@drawable/shape_button"
+            android:text="Iniciar sesión"
+            android:textAllCaps="false"
+            android:textSize="@dimen/spNivel2"
+            android:fontFamily="@font/roboto"
+            android:onClick="onClick_btnIniciarSesion"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dpMrgEntreInputs"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¿Aún no tienes cuenta? "
+                android:textAlignment="center"
+                android:linksClickable="true"/>
+            <TextView
+                android:id="@+id/actlg_btnLinkRegistrar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_login_register"
+                android:textAlignment="center"
+                android:linksClickable="true"
+                android:textColor="@color/app_button"
+                android:onClick="onClick_btnRegistrar"/>
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</ScrollView>

@@ -1,14 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context=".business.fragments.OtherBusiFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/dpMrgTop"
+        android:gravity="end">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/shp_input_buscar"
+            android:paddingLeft="@dimen/dpPddInputSearch"
+            android:paddingRight="@dimen/dpPddInputSearch">
+
+            <ImageButton
+                android:id="@+id/frgotherbusi_btnBuscar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_search"/>
+
+            <EditText
+                android:id="@+id/frgotherbusi_txtBuscar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="Buscar"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:minWidth="150dp"
+                android:padding="@dimen/dpPddInputSearch"
+                android:textColorHint="@color/app_font"
+                android:textSize="@dimen/spNivel0" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/frgotherbusi_btnAgregar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dpMrgGeneral"
+            style="@style/style_btn_blue"
+            android:padding="@dimen/dpPddInputSearch">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_add"
+                app:tint="@color/app_font_button" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/app_font_button"
+                android:text="Agregar"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerCardOtrosBusi"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>
