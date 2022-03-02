@@ -15,6 +15,9 @@
         android:theme="@style/Theme.AppShopOnline"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".business.activitys.EditUserAccount"
+            android:exported="false" />
+        <activity
             android:name=".business.HomeBusiActivity"
             android:exported="false" />
         <activity

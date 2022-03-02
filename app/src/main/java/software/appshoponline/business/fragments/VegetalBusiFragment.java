@@ -245,6 +245,7 @@ public class VegetalBusiFragment extends Fragment implements Response.Listener<J
 
         dialog_imgProducto = dialog_layout.findViewById(R.id.dialog_imgProducto);
         dialog_btnCambiarFoto = dialog_layout.findViewById(R.id.dialog_btnCambiarImagen);
+        dialog_btnCambiarFoto.setText("Agregar foto");
         dialog_btnCambiarFoto.setOnClickListener(clicBtnCambiarFoto);
 
         dialog_txtNombreProducto = dialog_layout.findViewById(R.id.dialog_txtNombreProducto);

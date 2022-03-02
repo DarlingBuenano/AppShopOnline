@@ -1,14 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".business.fragments.AccountBusiFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    android:layout_height="match_parent">
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
-</FrameLayout>
+        android:orientation="vertical"
+        tools:context=".business.fragments.AccountBusiFragment">
+        <ImageView
+            android:id="@+id/frgaccount_imgPerfil"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="@dimen/dpMrgBottomInputs"
+            android:background="@color/app_color_gris"
+            android:src="@drawable/ic_camera"/>
+        <TextView
+            android:id="@+id/frgaccount_txtNombreEmpresa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:fontFamily="@font/roboto_bold"
+            android:textSize="@dimen/spNivel3"
+            android:text="Marisco y Encebollados Petita"/>
+        <TextView
+            android:id="@+id/frgaccount_txtSlogan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dpMrgTop"
+            android:textAlignment="center"
+            android:textSize="@dimen/spNivel1"
+            android:text="Llevando el gusto a tu paladar"/>
+        <TextView
+            android:id="@+id/frgaccount_txtNombresUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="@dimen/spNivel2"
+            android:text="Darlyn Omar"/>
+        <TextView
+            android:id="@+id/frgaccount_txtApellidosUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dpMrgTop"
+            android:textAlignment="center"
+            android:textSize="@dimen/spNivel2"
+            android:text="Buenaño Vera"/>
+        <Button
+            android:id="@+id/frgaccount_btnCambiarFotoPerfil"
+            style="@style/style_btnAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cambiar foto de perfil"
+            app:icon="@drawable/ic_camera"
+            app:iconPadding="12dp"
+            app:iconTint="@color/app_color_gris_oscuro"
+            app:backgroundTint="@null"/>
+        <Button
+            android:id="@+id/frgaccount_btnConfiguracionUsuario"
+            style="@style/style_btnAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Configuración de usuario"
+            app:icon="@drawable/ic_account"
+            app:iconPadding="12dp"
+            app:iconTint="@color/app_color_gris_oscuro"
+            app:backgroundTint="@null"/>
+        <Button
+            android:id="@+id/frgaccount_btnConfiguracionEmpresa"
+            style="@style/style_btnAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Configuración de empresa"
+            app:icon="@drawable/ic_business_center"
+            app:iconPadding="12dp"
+            app:iconTint="@color/app_color_gris_oscuro"
+            app:backgroundTint="@null"/>
+        <Button
+            android:id="@+id/frgaccount_btnCerrarSesion"
+            style="@style/style_btnAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cerrar sesión"
+            app:icon="@drawable/ic_logout"
+            app:iconPadding="12dp"
+            app:iconTint="@color/app_color_gris_oscuro"
+            app:backgroundTint="@null"/>
+    </LinearLayout>
+</ScrollView>

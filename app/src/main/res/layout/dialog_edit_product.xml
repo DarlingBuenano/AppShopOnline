@@ -12,11 +12,9 @@
     <ImageView
         android:id="@+id/dialog_imgProducto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:layout_marginBottom="@dimen/dpMrgGeneral"
         android:background="#E6E6E6"
-        android:minHeight="100dp"
-        android:maxHeight="210dp"
         android:src="@drawable/ic_camera" />
     <Button
         android:id="@+id/dialog_btnCambiarImagen"
@@ -24,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/dpMrgGeneral"
-        android:text="Cambiar foto del producto"
+        android:text="Cambiar foto"
         app:backgroundTint="@null"
         app:icon="@drawable/ic_camera"
         app:iconTint="@color/app_button"/>

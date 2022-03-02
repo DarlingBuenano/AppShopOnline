@@ -19,6 +19,7 @@
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/shape_button.xml" value="0.25" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/shape_button_black.xml" value="0.2725" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/shape_button_green.xml" value="0.2725" />
+        <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/shape_button_gris.xml" value="0.273" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/shape_button_header_lef.xml" value="0.33" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/shape_button_header_right.xml" value="0.2890625" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/shape_button_red.xml" value="0.2725" />
@@ -46,6 +47,7 @@
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/state_btn_lef.xml" value="0.2775" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/drawable/state_button_header.xml" value="0.2775" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/font/roboto.xml" value="0.303125" />
+        <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/activity_edit_user_account.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/activity_home.xml" value="0.33" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/activity_home_busi.xml" value="0.25" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/activity_login.xml" value="0.33" />
@@ -53,13 +55,15 @@
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/activity_opciones_de_registro.xml" value="0.33" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/activity_register_container.xml" value="0.33" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/activity_welcome.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/dialog_edit_business.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/dialog_edit_product.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/fragment_account.xml" value="0.27291666666666664" />
-        <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/fragment_account_busi.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/fragment_account_busi.xml" value="0.5" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/fragment_body_cards.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/fragment_car_shop.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/fragment_chats.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/fragment_chats_busi.xml" value="0.33" />
+        <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/fragment_edit_user_account.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/fragment_fruit.xml" value="0.25885416666666666" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/fragment_fruit_busi.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Yayling/AndroidStudioProjects/AppShopOnline/app/src/main/res/layout/fragment_grain.xml" value="0.25885416666666666" />

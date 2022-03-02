@@ -48,7 +48,7 @@
     <string name="hint_ruc">RUC (opcional)</string>
     <string name="hint_nombre_empresa">Nombre de la empresa *</string>
     <string name="hint_slogan">Slogan *</string>
-    <string name="hint_costo_envio">Costo de envío</string>
+    <string name="hint_costo_envio">Costo de envío *</string>
 
     <string name="dialog_aceptar">Aceptar</string>
     <string name="dialog_cancelar">Cancelar</string>

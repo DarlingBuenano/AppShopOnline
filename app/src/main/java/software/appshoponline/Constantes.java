@@ -24,6 +24,13 @@ public class Constantes {
     public static final String URL_Eliminar_Producto_x_Empresa = "/eliminar-producto-x-empresa";
     public static final String URL_Agregar_Producto_x_Empresa = "/agregar-producto-x-empresa";
 
+    public static final String URL_Actualizar_Datos_Empresa = "/actualizar-datos-de-empresa";
+    public static final String URL_Actualizar_Datos_Usuario = "/actualizar-datos-de-usuario";
+    public static final String URL_Obtener_Datos_De_Usuario = "/obtener-datos-x-usuario";
+    public static final String URL_Obtener_Datos_De_Empresa = "/obtener-datos-x-empresa";
+
+    public static final String URL_Obtener_Cuenta_Empresa = "/obtener-cuenta-empresa";
+
     public static final int VOLLEY_DEFAULT_TIMEOUT = 10000;
 
     public static final String[] UNIDADES_DE_MDIDA = {"u", "lb", "g", "kg", "l", "ml", "m", "cm"};
