@@ -1,9 +1,13 @@
 package software.appshoponline.business.adapters;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +19,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,6 +37,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,6 +53,7 @@ public class ProductBusiAdapter extends RecyclerView.Adapter<ProductBusiAdapter.
     private ArrayList<Product> ListaProductosBusi;
     private RequestQueue requestQueue;
     private Context context;
+    private ActivityResultLauncher<Intent> mStartForResult;
 
     public ProductBusiAdapter(ArrayList<Product> products, Context context){
         this.ListaProductosBusi = products;
@@ -84,10 +94,9 @@ public class ProductBusiAdapter extends RecyclerView.Adapter<ProductBusiAdapter.
         EditText dialog_txtNombreProducto;
         EditText dialog_txtPrecio;
         Spinner unidadesMedidas;
-        String imagenString;
-        Boolean seCambioLaFoto = false;
         Product product;
 
+        Utilities utilidades;
         String mensaje;
         String accion;
 
@@ -140,8 +149,8 @@ public class ProductBusiAdapter extends RecyclerView.Adapter<ProductBusiAdapter.
                         parametrosPost.put("nombre", dialog_txtNombreProducto.getText().toString());
                         parametrosPost.put("precio", dialog_txtPrecio.getText().toString());
                         parametrosPost.put("unidad_medida", Constantes.UNIDADES_DE_MDIDA[unidadesMedidas.getSelectedItemPosition()]);
-                        if(seCambioLaFoto){
-                            parametrosPost.put("imagen", imagenString);
+                        if(utilidades.seCambioLaImagen){
+                            parametrosPost.put("imagen", utilidades.imgFotoString);
                         }
                         String url = Dominio.URL_WebServie + Constantes.URL_Actualizar_Producto_x_Empresa;
                         JSONObject jsonObject = new JSONObject(parametrosPost);
@@ -204,13 +213,8 @@ public class ProductBusiAdapter extends RecyclerView.Adapter<ProductBusiAdapter.
         private View.OnClickListener clicBtnCambiarFoto = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utilities utilidades = new Utilities();
+                utilidades = new Utilities(dialog_imgProducto);
                 utilidades.cargarFotoDesdeGaleria();
-                if ( ! utilidades.nombreImagen.isEmpty()){
-                    dialog_imgProducto.setImageBitmap(utilidades.imgFotoBitmap);
-                    seCambioLaFoto = true;
-                    imagenString = utilidades.imgFotoString;
-                }
             }
         };
 
@@ -220,7 +224,7 @@ public class ProductBusiAdapter extends RecyclerView.Adapter<ProductBusiAdapter.
                 try {
                     if (response.getBoolean("accion")){
                         Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
-                        seCambioLaFoto = false;
+                        utilidades.seCambioLaImagen = false;
                         if (accion.equals("Eliminar")){
                             ListaProductosBusi.remove(product);
                             notifyDataSetChanged();
