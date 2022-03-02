@@ -30,6 +30,7 @@ public class Constantes {
     public static final String URL_Obtener_Datos_De_Empresa = "/obtener-datos-x-empresa";
 
     public static final String URL_Obtener_Cuenta_Empresa = "/obtener-cuenta-empresa";
+    public static final String URL_Obtener_Cuenta_Usuario = "/obtener-cuenta-usuario";
 
     public static final String URL_Actualizar_Foto_Perfil = "/actualizar-foto-perfil";
 

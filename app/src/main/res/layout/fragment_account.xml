@@ -1,15 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".client.AccountFragment">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="20sp"
-        android:text="Fragment Account client" />
-
-</FrameLayout>
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".client.AccountFragmen">
+        <ImageView
+            android:id="@+id/frgaccountclient_imgPerfil"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="@dimen/dpMrgBottomInputs"
+            android:background="@color/app_color_gris"
+            android:src="@drawable/ic_camera"/>
+        <TextView
+            android:id="@+id/frgaccountclient_txtNombresUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="@dimen/spNivel2"
+            android:text="Nombres"/>
+        <TextView
+            android:id="@+id/frgaccountclient_txtApellidosUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dpMrgTop"
+            android:textAlignment="center"
+            android:textSize="@dimen/spNivel2"
+            android:text="Apellidos"/>
+        <Button
+            android:id="@+id/frgaccountclient_btnCambiarFotoPerfil"
+            style="@style/style_btnAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cambiar foto de perfil"
+            app:icon="@drawable/ic_camera"
+            app:iconPadding="12dp"
+            app:iconTint="@color/app_color_gris_oscuro"
+            app:backgroundTint="@null"/>
+        <Button
+            android:id="@+id/frgaccountclient_btnConfiguracionUsuario"
+            style="@style/style_btnAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Configuración de usuario"
+            app:icon="@drawable/ic_account"
+            app:iconPadding="12dp"
+            app:iconTint="@color/app_color_gris_oscuro"
+            app:backgroundTint="@null"/>
+        <Button
+            android:id="@+id/frgaccountclient_btnCerrarSesion"
+            style="@style/style_btnAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cerrar sesión"
+            app:icon="@drawable/ic_logout"
+            app:iconPadding="12dp"
+            app:iconTint="@color/app_color_gris_oscuro"
+            app:backgroundTint="@null"/>
+    </LinearLayout>
+</ScrollView>
