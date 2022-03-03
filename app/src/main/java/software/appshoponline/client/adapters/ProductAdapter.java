@@ -52,7 +52,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_product, null, false);
+                .inflate(R.layout.item_product, parent, false);
         return new ViewHolder(view);
     }
 
@@ -152,7 +152,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                         if (!isBtnLike){
                             Toast.makeText(context, "Producto añadido al carrito", Toast.LENGTH_SHORT).show();
                         }
-                        else{
+                        else if (response.getInt("categoria") != 1){
                             ListaProductos.remove(producto);
                             notifyDataSetChanged();
                         }

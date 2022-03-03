@@ -1,11 +1,13 @@
 package software.appshoponline.client.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +24,7 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import software.appshoponline.Dominio;
+import software.appshoponline.MensajeActivity;
 import software.appshoponline.R;
 
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder>{
@@ -39,7 +42,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder>{
     @NonNull
     @Override
     public ChatAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_chat, null, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_chat, parent, false);
         return new ViewHolder(view);
     }
 
@@ -63,6 +66,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder>{
         TextView txtNombreChat;
         TextView txtMensajeCortoChat;
         TextView txtHoraUltimoMensaje;
+        LinearLayout btnAbrirChat;
+        Chat chat;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -70,12 +75,15 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder>{
             txtNombreChat = itemView.findViewById(R.id.chat_txtNombre);
             txtMensajeCortoChat = itemView.findViewById(R.id.chat_txtMensaje);
             txtHoraUltimoMensaje = itemView.findViewById(R.id.chat_txtHora);
+            btnAbrirChat = itemView.findViewById(R.id.chat_btnAbrirChat);
         }
 
         public void asignarInformacion(Chat chat){
+            this.chat = chat;
             txtNombreChat.setText(chat.NombreChat);
             txtMensajeCortoChat.setText(chat.MensajeCorto);
             txtHoraUltimoMensaje.setText(chat.HoraUltimoMensaje);
+            btnAbrirChat.setOnClickListener(clicBtnAbrirChat);
 
             cargarImagenPerfil(Dominio.URL_Media + chat.ImagenUrl);
         }
@@ -95,5 +103,18 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder>{
             });
             requestQueue.add(imageRequest);
         }
+
+        private View.OnClickListener clicBtnAbrirChat = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, MensajeActivity.class);
+                intent.putExtra("usuario_id", chat.Usuario_id);
+                intent.putExtra("usuario_empresa_id", chat.Usuario_Empresa_id);
+                intent.putExtra("empresa_id", chat.Empresa_id);
+                intent.putExtra("nombre_chat", chat.NombreChat);
+                intent.putExtra("img_url", chat.ImagenUrl);
+                context.startActivity(intent);
+            }
+        };
     }
 }

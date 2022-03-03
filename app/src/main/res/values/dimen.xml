@@ -2,6 +2,7 @@
 <resources>
     <dimen name="fontAppName">22sp</dimen>
     <dimen name="spNivel_basicResumen">11sp</dimen>
+    <dimen name="spNivel_mensaje">12sp</dimen>
     <dimen name="spNivel_basic">14sp</dimen>
     <dimen name="spNivel0">14sp</dimen>
     <dimen name="spNivel1">16sp</dimen>
@@ -38,4 +39,7 @@
     <!--Chats-->
     <dimen name="width_img_chat">50dp</dimen>
     <dimen name="height_img_chat">50dp</dimen>
+    <!--mensaje-->
+    <dimen name="size_ic_mensaje">30dp</dimen>
+    <dimen name="size_img_mensaje">40dp</dimen>
 </resources>

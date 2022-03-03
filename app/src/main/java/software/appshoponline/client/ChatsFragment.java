@@ -1,6 +1,7 @@
 package software.appshoponline.client;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -27,6 +29,7 @@ import java.util.ArrayList;
 
 import software.appshoponline.Constantes;
 import software.appshoponline.Dominio;
+import software.appshoponline.MensajeActivity;
 import software.appshoponline.R;
 import software.appshoponline.client.adapters.Chat;
 import software.appshoponline.client.adapters.ChatAdapter;
@@ -98,20 +101,28 @@ public class ChatsFragment extends Fragment {
         @Override
         public void onResponse(JSONObject response) {
             try {
-                JSONArray jsonListaChats = response.getJSONArray("datos");
-                listaChats = new ArrayList<Chat>();
+                if (response.getBoolean("accion")){
+                    JSONArray jsonListaChats = response.getJSONArray("datos");
+                    listaChats = new ArrayList<Chat>();
 
-                for(int i = 0; i < jsonListaChats.length(); i++){
-                    JSONObject chat = jsonListaChats.getJSONObject(i);
-                    listaChats.add(new Chat(
-                            chat.getString("img_url"),
-                            chat.getString("nombre_chat"),
-                            chat.getString("mensaje"),
-                            chat.getString("hora_ultimo_mensaje")));
+                    for(int i = 0; i < jsonListaChats.length(); i++){
+                        JSONObject chat = jsonListaChats.getJSONObject(i);
+                        listaChats.add(new Chat(
+                                chat.getInt("sala_id"),
+                                chat.getInt("usuario_id"),
+                                chat.getInt("usuario_empresa_id"),
+                                chat.getInt("empresa_id"),
+                                chat.getString("img_url"),
+                                chat.getString("nombre_chat"),
+                                chat.getString("mensaje"),
+                                chat.getString("hora_ultimo_mensaje")));
+                    }
+                    ChatAdapter chatAdapter = new ChatAdapter(listaChats, getContext());
+                    recyclerChats.setAdapter(chatAdapter);
                 }
-                ChatAdapter chatAdapter = new ChatAdapter(listaChats, getContext());
-                recyclerChats.setAdapter(chatAdapter);
-
+                else{
+                    Toast.makeText(getContext(), "No tienes chats disponibles por el momento", Toast.LENGTH_SHORT).show();
+                }
             } catch (JSONException e) {
                 e.printStackTrace();
                 System.out.println("Error al procesar los productos: " + e.getMessage());

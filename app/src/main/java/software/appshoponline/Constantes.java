@@ -35,6 +35,8 @@ public class Constantes {
     public static final String URL_Actualizar_Foto_Perfil = "/actualizar-foto-perfil";
 
     public static final String URL_Mostrar_Chats_x_Cliente = "/obtener-chats-x-cliente";
+    public static final String URL_Consultar_o_Registrar_Sala = "/consultar-o-registrar-sala";
+    public static final String URL_Registrar_Mensaje_x_Usuario = "/registrar-mensaje-x-usuario";
 
     public static final int VOLLEY_DEFAULT_TIMEOUT = 10000;
 

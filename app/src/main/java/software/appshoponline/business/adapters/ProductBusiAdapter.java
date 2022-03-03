@@ -62,7 +62,7 @@ public class ProductBusiAdapter extends RecyclerView.Adapter<ProductBusiAdapter.
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_product_busi, null, false);
+                .inflate(R.layout.item_product_busi, parent, false);
         return new ViewHolder(view);
     }
 

@@ -112,12 +112,14 @@ public class CarShopFragment extends Fragment implements Response.Listener<JSONO
 
                 ListaEmpresas.add(new Empresa(
                         empresa.getInt("id"),
+                        empresa.getInt("usuario_empresa_id"),
+                        empresa.getString("img_url"),
                         empresa.getString("nombre"),
                         empresa.getDouble("costo_envio"),
                         empresa.getJSONArray("productos")
                 ));
             }
-            EmpresaAdapter empresaAdapter = new EmpresaAdapter(ListaEmpresas, getContext(), getParentFragmentManager(), this.getViewLifecycleOwner());
+            EmpresaAdapter empresaAdapter = new EmpresaAdapter(ListaEmpresas, getContext(), getParentFragmentManager(), this.getViewLifecycleOwner(), usuario_id);
             this.recycler.setAdapter(empresaAdapter);
         }
         catch (JSONException e){

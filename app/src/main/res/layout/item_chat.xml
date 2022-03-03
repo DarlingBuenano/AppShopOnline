@@ -7,10 +7,13 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
+        android:id="@+id/chat_btnAbrirChat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:paddingTop="7dp"
+        android:paddingBottom="7dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/chat_imgPerfil"

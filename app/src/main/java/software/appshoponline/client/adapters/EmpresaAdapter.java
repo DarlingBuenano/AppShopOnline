@@ -3,6 +3,7 @@ package software.appshoponline.client.adapters;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -34,13 +35,13 @@ import java.util.ArrayList;
 
 import software.appshoponline.Constantes;
 import software.appshoponline.Dominio;
+import software.appshoponline.MensajeActivity;
 import software.appshoponline.R;
 
 public class EmpresaAdapter extends RecyclerView.Adapter<EmpresaAdapter.ViewHolder> {
 
     private ArrayList<Empresa> listaEmpresas;
-    private SharedPreferences pref;
-    private int usuario;
+    private int usuario_id;
     private RecyclerView recycler;
 
     private Context context;
@@ -49,13 +50,12 @@ public class EmpresaAdapter extends RecyclerView.Adapter<EmpresaAdapter.ViewHold
     private DecimalFormat moneda;
     private LifecycleOwner lifecycle;
 
-    public EmpresaAdapter(ArrayList<Empresa> listaEmpresas, Context context, FragmentManager fragmentManager, LifecycleOwner lifecycle){
+    public EmpresaAdapter(ArrayList<Empresa> listaEmpresas, Context context, FragmentManager fragmentManager, LifecycleOwner lifecycle, int usuario_id){
         this.listaEmpresas = listaEmpresas;
         this.context = context;
         this.fragmentManager = fragmentManager;
         this.lifecycle = lifecycle;
-        this.pref = context.getSharedPreferences("shared_login_data", Context.MODE_PRIVATE);
-        this.usuario = pref.getInt("usuario_id", 1);
+        this.usuario_id = usuario_id;
         this.moneda = new DecimalFormat("#0.00");
     }
 
@@ -63,7 +63,7 @@ public class EmpresaAdapter extends RecyclerView.Adapter<EmpresaAdapter.ViewHold
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         root = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_compra_x_empresa, null, false);
+                .inflate(R.layout.item_compra_x_empresa, parent, false);
 
         recycler = root.findViewById(R.id.recyclerListaProductosXComprar);
         recycler.setLayoutManager(new LinearLayoutManager(root.getContext(), LinearLayoutManager.VERTICAL, false));
@@ -92,6 +92,7 @@ public class EmpresaAdapter extends RecyclerView.Adapter<EmpresaAdapter.ViewHold
         JsonObjectRequest jsonObjectRequest;
         ArrayList<Product> listaProductos;
         int venta_id = 0;
+        Empresa empresa;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -104,6 +105,7 @@ public class EmpresaAdapter extends RecyclerView.Adapter<EmpresaAdapter.ViewHold
         }
 
         public void asignarInformacion(Empresa empresa){
+            this.empresa = empresa;
             txtNombreEmpresa.setText(empresa.Nombre);
             txtCostoDeEnvio.setText("Costo de envío: $ " + moneda.format(empresa.Costo_envio));
             double precio_productos = 0;
@@ -155,10 +157,10 @@ public class EmpresaAdapter extends RecyclerView.Adapter<EmpresaAdapter.ViewHold
             btnComprarAhora.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    String url = Dominio.URL_WebServie + Constantes.URL_Registrar_Venta_de_Productos + "/"+usuario +"/"+empresa.Id +"/"+moneda.format(total).replace(',', '.');
+                    String url = Dominio.URL_WebServie + Constantes.URL_Registrar_Venta_de_Productos + "/"+usuario_id +"/"+empresa.Id +"/"+moneda.format(total).replace(',', '.');
                     requestQueueRegistrarVenta(url);
 
-                    builderDialog.setTitle(R.string.title_comprar)
+                    /*builderDialog.setTitle(R.string.title_comprar)
                             .setMessage(R.string.message_comprar)
                             .setPositiveButton(R.string.alert_aceptar, new DialogInterface.OnClickListener() {
                                 @Override
@@ -167,7 +169,9 @@ public class EmpresaAdapter extends RecyclerView.Adapter<EmpresaAdapter.ViewHold
                                     notifyDataSetChanged();
                                 }
                             });
-                    builderDialog.create().show();
+                    builderDialog.create().show();*/
+                    listaEmpresas.remove(empresa);
+                    notifyDataSetChanged();
                 }
             });
         }
@@ -178,11 +182,26 @@ public class EmpresaAdapter extends RecyclerView.Adapter<EmpresaAdapter.ViewHold
                 public void onResponse(JSONObject response) {
                     try {
                         venta_id = response.getInt("registro");
+                        String pedido = "Mi pedido es:\n";
                         for (Product item:listaProductos) {
-                            String url = Dominio.URL_WebServie + Constantes.URL_Registrar_Detalle_de_Venta + "/"+usuario +"/"+venta_id +"/"+item.Id +"/"+item.Cantidad;
+                            pedido = pedido + " * "+item.Cantidad+ " "+item.Nombre+ ", $"+item.Precio+ "\n";
+                            String url = Dominio.URL_WebServie + Constantes.URL_Registrar_Detalle_de_Venta + "/"+usuario_id +"/"+venta_id +"/"+item.Id +"/"+item.Cantidad;
                             requestQueueRegistrarDetalleVenta(url);
                         }
-                        System.out.println("Venta id:" + response.getInt("registro"));
+                        pedido = pedido + "Costo de envío: $" + empresa.Costo_envio + "\n";
+                        pedido = pedido + "Total: $" + total;
+
+                        System.out.println(pedido);
+
+                        Intent intent = new Intent(context, MensajeActivity.class);
+                        intent.putExtra("pedido", pedido);
+                        intent.putExtra("usuario_id", usuario_id);
+                        intent.putExtra("usuario_empresa_id", empresa.Usuario_Empresa_Id);
+                        intent.putExtra("img_url", empresa.ImagenUrl);
+                        intent.putExtra("empresa_id", empresa.Id);
+                        intent.putExtra("nombre_chat", empresa.Nombre);
+                        context.startActivity(intent);
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
