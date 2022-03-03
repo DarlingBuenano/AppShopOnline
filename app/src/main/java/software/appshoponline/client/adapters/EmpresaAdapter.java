@@ -159,7 +159,6 @@ public class EmpresaAdapter extends RecyclerView.Adapter<EmpresaAdapter.ViewHold
                 public void onClick(View view) {
                     String url = Dominio.URL_WebServie + Constantes.URL_Registrar_Venta_de_Productos + "/"+usuario_id +"/"+empresa.Id +"/"+moneda.format(total).replace(',', '.');
                     requestQueueRegistrarVenta(url);
-
                     /*builderDialog.setTitle(R.string.title_comprar)
                             .setMessage(R.string.message_comprar)
                             .setPositiveButton(R.string.alert_aceptar, new DialogInterface.OnClickListener() {

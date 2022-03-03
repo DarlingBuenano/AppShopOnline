@@ -102,6 +102,7 @@ public class ProductXEmpresaAdapter extends RecyclerView.Adapter<ProductXEmpresa
 
         public void asignarInformacion(Product producto){
             this.producto = producto;
+            this.producto.Cantidad = cantidad;
             txtNombreProducto.setText(producto.Nombre);
             txtVerCantidad.setText(String.valueOf(cantidad));
             txtPrecioxCantidadProducto.setText("$ " + formatoMoneda.format(producto.Precio));
@@ -126,6 +127,7 @@ public class ProductXEmpresaAdapter extends RecyclerView.Adapter<ProductXEmpresa
                 public void onClick(View view) {
                     if (cantidad > 1){
                         cantidad = cantidad - 1;
+                        producto.Cantidad = cantidad;
                         actualizarCantidad(producto.Precio * -1);
                     }
                 }
@@ -134,6 +136,7 @@ public class ProductXEmpresaAdapter extends RecyclerView.Adapter<ProductXEmpresa
                 @Override
                 public void onClick(View view) {
                     cantidad = cantidad + 1;
+                    producto.Cantidad = cantidad;
                     actualizarCantidad(producto.Precio);
                 }
             });
@@ -147,7 +150,7 @@ public class ProductXEmpresaAdapter extends RecyclerView.Adapter<ProductXEmpresa
         }
 
         private void actualizarCantidad(double precio){
-            producto.Cantidad = cantidad;
+            //producto.Cantidad = cantidad;
             bundle.putDouble(requestKey, precio);
             fragmentManager.setFragmentResult(requestKey, bundle);
 

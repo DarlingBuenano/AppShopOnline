@@ -27,6 +27,7 @@ import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -133,17 +134,16 @@ public class MensajesFragment extends Fragment {
     public void onStart() {
         super.onStart();
         if (pedido != null){
-            mensajeAdapter = new MensajeAdapter(ListaMensajes, getContext(), 0);
+            mensajeAdapter = new MensajeAdapter(ListaMensajes, getContext(), usuario_empresa_id);
             enviarMensaje(Dominio.URL_WebServie + Constantes.URL_Registrar_Mensaje_x_Usuario, pedido);
+            recyclerMensajes.setAdapter(mensajeAdapter);
         }
         else{
-            //cargar los mensajes anteriores
-            //llenar la lista de mansajes a mostrar
-            //mensajeAdapter = new MensajeAdapter(ListaMensajes, getContext(), 0);
+            cargarMensajesAntiguos();
+            //mensajeAdapter = new MensajeAdapter(ListaMensajes, getContext(), usuario_empresa_id);
         }
         //obtenerDatosEmpresa(empresa_id);
         cargarImagenPerfil();
-        recyclerMensajes.setAdapter(mensajeAdapter);
     }
 
     private View.OnClickListener clickBtnRegresar = new View.OnClickListener() {
@@ -154,6 +154,26 @@ public class MensajesFragment extends Fragment {
     };
 
     private void cargarMensajesAntiguos(){
+        String url = Dominio.URL_WebServie + Constantes.URL_Mostrar_Mensajes_x_Sala +"/" +sala_id;
+        this.jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, responseListener, errorListener);
+        this.requestQueue.add(this.jsonObjectRequest);
+    }
+
+    private void mostrarMensajesAntiguosEnElChat(JSONArray arrayMensajes){
+        try {
+            for (int i = 0; i < arrayMensajes.length(); i++) {
+                JSONObject mensaje = arrayMensajes.getJSONObject(i);
+                ListaMensajes.add(new Mensaje(
+                        mensaje.getInt("usuario_id"),
+                        mensaje.getString("texto"),
+                        mensaje.getString("hora")
+                ));
+            }
+            mensajeAdapter = new MensajeAdapter(ListaMensajes, getContext(), usuario_empresa_id);
+            recyclerMensajes.setAdapter(mensajeAdapter);
+        }catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     public void cargarImagenPerfil(){
@@ -190,28 +210,7 @@ public class MensajesFragment extends Fragment {
 
         JSONObject jsonObject = new JSONObject(paramPost);
 
-        this.jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    if (response.getBoolean("accion")){
-                        System.out.println("Mensaje gaurdado con exito");
-                        //Toast.makeText(getContext(), "Mensaje enviado", Toast.LENGTH_SHORT).show();
-                        //mostrarMensajeEnElChat(response.getString("hora"), msj);
-                    }
-                    else{
-                        Toast.makeText(getContext(), "No se pudo guardar el mensaje", Toast.LENGTH_SHORT).show();
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "Ocurrió un error al intentar conectarse con el servidor", Toast.LENGTH_SHORT).show();
-            }
-        });
+        this.jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, responseListener, errorListener);
         this.requestQueue.add(this.jsonObjectRequest);
     }
 
@@ -220,6 +219,31 @@ public class MensajesFragment extends Fragment {
         ListaMensajes.add(mensaje);
         txtMensajeAEnviar.setText("");
     }
+
+    private Response.Listener<JSONObject> responseListener = new Response.Listener<JSONObject>() {
+        @Override
+        public void onResponse(JSONObject response) {
+            try {
+                if (response.getBoolean("accion")){
+                    //System.out.println("Mensaje gaurdado con exito");
+                    if (response.getString("metodo").equals("obtener")){
+                        mostrarMensajesAntiguosEnElChat(response.getJSONArray("datos"));
+                    }
+                }
+                else{
+                    Toast.makeText(getContext(), "No se pudo guardar el mensaje", Toast.LENGTH_SHORT).show();
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    };
+    private Response.ErrorListener errorListener = new Response.ErrorListener() {
+        @Override
+        public void onErrorResponse(VolleyError error) {
+            Toast.makeText(getContext(), "Ocurrió un error al intentar conectarse con el servidor", Toast.LENGTH_SHORT).show();
+        }
+    };
 
     /*private void obtenerDatosEmpresa(int empresa_id){
         String url = Dominio.URL_WebServie + Constantes.URL_Obtener_Datos_De_Empresa + "/"+empresa_id;
