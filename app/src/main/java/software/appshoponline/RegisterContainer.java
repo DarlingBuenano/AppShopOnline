@@ -72,9 +72,10 @@ public class RegisterContainer extends AppCompatActivity implements Response.Lis
             transaction.hide(frgOpcionesDeRegistro);
             transaction.show(frgRegisterBusiness);
         }
-        else
+        else {
             transaction.hide(frgOpcionesDeRegistro);
             transaction.add(R.id.actReg_frg_register_container, frgRegisterBusiness, tag);
+        }
         transaction.commit();
     }
 
@@ -85,9 +86,10 @@ public class RegisterContainer extends AppCompatActivity implements Response.Lis
             transaction.hide(frgOpcionesDeRegistro);
             transaction.show(frgRegisterClient);
         }
-        else
+        else{
             transaction.hide(frgOpcionesDeRegistro);
             transaction.add(R.id.actReg_frg_register_container, frgRegisterClient, tag);
+        }
         transaction.commit();
     }
 
