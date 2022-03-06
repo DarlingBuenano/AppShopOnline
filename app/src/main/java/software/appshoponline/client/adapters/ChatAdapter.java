@@ -81,8 +81,15 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder>{
         public void asignarInformacion(Chat chat){
             this.chat = chat;
             txtNombreChat.setText(chat.NombreChat);
-            txtMensajeCortoChat.setText(chat.MensajeCorto);
-            txtHoraUltimoMensaje.setText(chat.HoraUltimoMensaje);
+            if (chat.MensajeCorto.length() > 30){
+                String msj = chat.MensajeCorto.replace("\n", " ");
+                msj = msj.substring(0, 26) + "...";
+                txtMensajeCortoChat.setText(msj);
+            }
+            else{
+                txtMensajeCortoChat.setText(chat.MensajeCorto);
+            }
+            txtHoraUltimoMensaje.setText(chat.HoraUltimoMensaje.substring(0, 5));
             btnAbrirChat.setOnClickListener(clicBtnAbrirChat);
 
             cargarImagenPerfil(Dominio.URL_Media + chat.ImagenUrl);
@@ -108,6 +115,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder>{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, MensajeActivity.class);
+                intent.putExtra("sala_id", chat.Sala_id);
                 intent.putExtra("usuario_id", chat.Usuario_id);
                 intent.putExtra("usuario_empresa_id", chat.Usuario_Empresa_id);
                 intent.putExtra("empresa_id", chat.Empresa_id);

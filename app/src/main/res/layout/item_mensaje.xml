@@ -10,21 +10,26 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:minWidth="@dimen/min_width_mensaje"
         android:orientation="vertical"
-        android:padding="5dp"
+        android:layout_marginBottom="5dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:background="@drawable/shape_mensaje">
         <TextView
             android:id="@+id/msj_txtMensaje"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mi pedido es"/>
+            android:textSize="@dimen/spNivel1"
+            android:text="Mi mensaje"/>
         <TextView
             android:id="@+id/msj_txtHora"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="textEnd"
-            android:text="16:57"
-            android:textSize="@dimen/spNivel_mensaje"/>
+            android:text="16:57"/>
     </LinearLayout>
 
 </RelativeLayout>

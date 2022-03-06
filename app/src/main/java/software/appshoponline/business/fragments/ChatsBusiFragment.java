@@ -109,8 +109,8 @@ public class ChatsBusiFragment extends Fragment {
                         JSONObject chat = jsonListaChats.getJSONObject(i);
                         listaChats.add(new Chat(
                                 chat.getInt("sala_id"),
-                                chat.getInt("usuario_id"),
                                 chat.getInt("usuario_empresa_id"),
+                                chat.getInt("usuario_id"),
                                 chat.getInt("empresa_id"),
                                 chat.getString("img_url"),
                                 chat.getString("nombre_chat"),

@@ -87,7 +87,6 @@ public class ProductXEmpresaAdapter extends RecyclerView.Adapter<ProductXEmpresa
         ImageButton btnEliminarProductoDelCarrito;
         TextView txtPrecioxCantidadProducto;
         Product producto;
-        int cantidad = 1;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -102,9 +101,8 @@ public class ProductXEmpresaAdapter extends RecyclerView.Adapter<ProductXEmpresa
 
         public void asignarInformacion(Product producto){
             this.producto = producto;
-            this.producto.Cantidad = cantidad;
             txtNombreProducto.setText(producto.Nombre);
-            txtVerCantidad.setText(String.valueOf(cantidad));
+            txtVerCantidad.setText(String.valueOf(this.producto.Cantidad));
             txtPrecioxCantidadProducto.setText("$ " + formatoMoneda.format(producto.Precio));
 
             String url = Dominio.URL_Media + producto.UrlImagen;
@@ -125,9 +123,8 @@ public class ProductXEmpresaAdapter extends RecyclerView.Adapter<ProductXEmpresa
             btnDisminuirCantidad.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (cantidad > 1){
-                        cantidad = cantidad - 1;
-                        producto.Cantidad = cantidad;
+                    if (producto.Cantidad > 1){
+                        producto.Cantidad -= 1;
                         actualizarCantidad(producto.Precio * -1);
                     }
                 }
@@ -135,8 +132,7 @@ public class ProductXEmpresaAdapter extends RecyclerView.Adapter<ProductXEmpresa
             btnAumentarCantidad.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    cantidad = cantidad + 1;
-                    producto.Cantidad = cantidad;
+                    producto.Cantidad += 1;
                     actualizarCantidad(producto.Precio);
                 }
             });
@@ -150,14 +146,13 @@ public class ProductXEmpresaAdapter extends RecyclerView.Adapter<ProductXEmpresa
         }
 
         private void actualizarCantidad(double precio){
-            //producto.Cantidad = cantidad;
             bundle.putDouble(requestKey, precio);
             fragmentManager.setFragmentResult(requestKey, bundle);
 
             if (precio < 0)
                 precio = precio * -1;
-            txtVerCantidad.setText(String.valueOf(cantidad));
-            txtPrecioxCantidadProducto.setText("$ " + formatoMoneda.format(cantidad * precio));
+            txtVerCantidad.setText(String.valueOf(producto.Cantidad));
+            txtPrecioxCantidadProducto.setText("$ " + formatoMoneda.format(producto.Cantidad * precio));
         }
 
         private void requestQueueGetVolley(String url){

@@ -34,7 +34,7 @@ public class MensajeActivity extends AppCompatActivity {
     JsonObjectRequest jsonObjectRequest;
 
     int usuario_id;
-    int usuario_empresa_id;
+    int usuario_destino_id;
     int empresa_id;
     int sala_id;
     String img_url;
@@ -50,15 +50,11 @@ public class MensajeActivity extends AppCompatActivity {
         requestQueue = Volley.newRequestQueue(this);
         frgMensajes = new MensajesFragment();
 
-        //consultar datos de sesion de usuario
-        //SharedPreferences pref;
-        //pref = getSharedPreferences("shared_login_data", Context.MODE_PRIVATE);
-        //usuario_id = pref.getInt("usuario_id", 1);
-
         //Obtener los datos
         datos = getIntent().getExtras();
+        sala_id = datos.getInt("sala_id");
         usuario_id = datos.getInt("usuario_id");
-        usuario_empresa_id = datos.getInt("usuario_empresa_id");
+        usuario_destino_id = datos.getInt("usuario_empresa_id");
         empresa_id = datos.getInt("empresa_id");
         nombre_chat = datos.getString("nombre_chat");
         img_url = datos.getString("img_url");
@@ -68,7 +64,12 @@ public class MensajeActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        consultar_o_Registrar_Sala();
+        if (sala_id == 0){
+            consultar_o_Registrar_Sala();
+        }
+        else{
+            irAlFragmentMensajes();
+        }
     }
 
     @Override
@@ -112,7 +113,7 @@ public class MensajeActivity extends AppCompatActivity {
         Bundle args = new Bundle();
         args.putInt("usuario_id", usuario_id);
         args.putInt("empresa_id", empresa_id);
-        args.putInt("usuario_empresa_id", usuario_empresa_id);
+        args.putInt("usuario_destino_id", usuario_destino_id);
         args.putString("nombre_chat", nombre_chat);
         args.putString("img_url", img_url);
         args.putString("pedido", pedido);

@@ -39,7 +39,7 @@ public class MensajeAdapter extends RecyclerView.Adapter<MensajeAdapter.ViewHold
     @NonNull
     @Override
     public MensajeAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_mensaje, null, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_mensaje, parent, false);
         return new ViewHolder(view);
     }
 
@@ -71,7 +71,7 @@ public class MensajeAdapter extends RecyclerView.Adapter<MensajeAdapter.ViewHold
 
         public void asignarInformacion(Mensaje mensaje){
             msj_txtMensaje.setText(mensaje.Texto);
-            msj_txtHora.setText(mensaje.Hora);
+            msj_txtHora.setText(mensaje.Hora.substring(0, 5));
 
             if (mensaje.Usuario == Usuario_destino){
                 msj_layout.setGravity(LinearLayout.LAYOUT_DIRECTION_LTR);

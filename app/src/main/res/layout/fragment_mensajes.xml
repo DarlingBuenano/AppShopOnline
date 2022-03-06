@@ -20,14 +20,14 @@
 
         <ImageButton
             android:id="@+id/frgmsj_btnRegresar"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="@dimen/size_ic_mensaje"
+            android:layout_height="@dimen/size_ic_mensaje"
             android:background="@drawable/ic_atras"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/frgmsj_imgFotoPerfil"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/size_img_mensaje"
+            android:layout_height="@dimen/size_img_mensaje"
             android:layout_marginRight="10dp"
             android:src="@drawable/ic_camera"
             app:civ_border_width="2dp"
@@ -37,7 +37,8 @@
             android:id="@+id/frgmsj_txtNombreChat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nombre del chat"/>
+            android:text="Nombre del chat"
+            android:textSize="@dimen/spNivel1"/>
 
     </LinearLayout>
 
@@ -65,14 +66,15 @@
         <EditText
             android:id="@+id/frgmsj_txtMensaje"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:hint="Mensaje"
+            android:textSize="@dimen/spNivel1"
             android:background="@null"/>
 
         <ImageButton
             android:id="@+id/frgmsj_btnEnviar"
-            android:layout_width="30dp"
+            android:layout_width="35dp"
             android:layout_height="match_parent"
             android:background="@drawable/ic_send"
             android:backgroundTint="@color/app_button" />

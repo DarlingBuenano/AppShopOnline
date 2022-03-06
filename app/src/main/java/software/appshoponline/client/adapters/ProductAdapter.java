@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -72,7 +73,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         TextView txtPrecio_Unidad;
         ImageView imgProducto;
         Button btnLikeProducto;
-        Button btnAgregarAlCarrito;
+        ImageButton btnAgregarAlCarrito;
         JsonObjectRequest jsonObjectRequest;
         Product producto;
         boolean isBtnLike;

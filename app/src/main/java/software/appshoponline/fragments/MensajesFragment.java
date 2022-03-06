@@ -60,9 +60,9 @@ public class MensajesFragment extends Fragment {
     String imagen_Url;
     String nombre_Chat;
     String pedido;
-    int usuario_id;
+    int usuario_origen_id;
     int empresa_id;
-    int usuario_empresa_id;
+    int usuario_destino_id;
     int sala_id;
 
     private ImageButton btnRegresar;
@@ -95,9 +95,9 @@ public class MensajesFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
 
-            usuario_empresa_id = getArguments().getInt("usuario_empresa_id");
+            usuario_destino_id = getArguments().getInt("usuario_destino_id");
             empresa_id = getArguments().getInt("empresa_id");
-            usuario_id = getArguments().getInt("usuario_id");
+            usuario_origen_id = getArguments().getInt("usuario_id");
             nombre_Chat = getArguments().getString("nombre_chat");
             imagen_Url = getArguments().getString("img_url");
             pedido = getArguments().getString("pedido");
@@ -134,7 +134,7 @@ public class MensajesFragment extends Fragment {
     public void onStart() {
         super.onStart();
         if (pedido != null){
-            mensajeAdapter = new MensajeAdapter(ListaMensajes, getContext(), usuario_empresa_id);
+            mensajeAdapter = new MensajeAdapter(ListaMensajes, getContext(), usuario_destino_id);
             enviarMensaje(Dominio.URL_WebServie + Constantes.URL_Registrar_Mensaje_x_Usuario, pedido);
             recyclerMensajes.setAdapter(mensajeAdapter);
         }
@@ -169,7 +169,7 @@ public class MensajesFragment extends Fragment {
                         mensaje.getString("hora")
                 ));
             }
-            mensajeAdapter = new MensajeAdapter(ListaMensajes, getContext(), usuario_empresa_id);
+            mensajeAdapter = new MensajeAdapter(ListaMensajes, getContext(), usuario_destino_id);
             recyclerMensajes.setAdapter(mensajeAdapter);
         }catch (JSONException e) {
             e.printStackTrace();
@@ -201,10 +201,9 @@ public class MensajesFragment extends Fragment {
 
     private void enviarMensaje(String url, String msj){
         date = new Date();
-        //response.getString("hora")
         mostrarMensajeEnElChat(formatter.format(date), msj);
         HashMap<String, String> paramPost = new HashMap<>();
-        paramPost.put("usuario_id", String.valueOf(usuario_id));
+        paramPost.put("usuario_id", String.valueOf(usuario_origen_id));
         paramPost.put("sala_id", String.valueOf(sala_id));
         paramPost.put("mensaje", msj);
 
@@ -215,7 +214,7 @@ public class MensajesFragment extends Fragment {
     }
 
     private void mostrarMensajeEnElChat(String hora, String msj){
-        Mensaje mensaje = new Mensaje(usuario_id, msj, hora);
+        Mensaje mensaje = new Mensaje(usuario_origen_id, msj, hora);
         ListaMensajes.add(mensaje);
         txtMensajeAEnviar.setText("");
     }
@@ -244,32 +243,4 @@ public class MensajesFragment extends Fragment {
             Toast.makeText(getContext(), "Ocurrió un error al intentar conectarse con el servidor", Toast.LENGTH_SHORT).show();
         }
     };
-
-    /*private void obtenerDatosEmpresa(int empresa_id){
-        String url = Dominio.URL_WebServie + Constantes.URL_Obtener_Datos_De_Empresa + "/"+empresa_id;
-
-        this.jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    if (response.getBoolean("accion")){
-                        JSONObject empresa = response.getJSONObject("datos");
-                        String urlImagen = empresa.getString("url_imagen");
-                        cargarImagenPerfil(Dominio.URL_Media + urlImagen);
-                    }
-                    else{
-                        Toast.makeText(getContext(), "NO se pudo guardar el mensaje", Toast.LENGTH_SHORT).show();
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "Ocurrió un error al intentar conectarse con el servidor", Toast.LENGTH_SHORT).show();
-            }
-        });
-        this.requestQueue.add(this.jsonObjectRequest);
-    }*/
 }

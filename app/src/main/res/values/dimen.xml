@@ -32,6 +32,10 @@
     <dimen name="dpElevation">12dp</dimen>
     <dimen name="dpCorners">12dp</dimen>
 
+    <!--ImageButton-->
+    <dimen name="size_width_imgbutton">42dp</dimen>
+    <dimen name="size_height_imgbutton">40dp</dimen>
+
     <!--Cards-->
     <dimen name="dpTmFavorito">18dp</dimen>
     <dimen name="dpTmAggCarrito">18dp</dimen>
@@ -39,7 +43,9 @@
     <!--Chats-->
     <dimen name="width_img_chat">50dp</dimen>
     <dimen name="height_img_chat">50dp</dimen>
+
     <!--mensaje-->
     <dimen name="size_ic_mensaje">30dp</dimen>
     <dimen name="size_img_mensaje">40dp</dimen>
+    <dimen name="min_width_mensaje">80dp</dimen>
 </resources>

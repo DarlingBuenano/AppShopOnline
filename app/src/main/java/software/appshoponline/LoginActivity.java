@@ -77,20 +77,16 @@ public class LoginActivity extends AppCompatActivity
                 if(checkSesion.isChecked()){
                     editor.putBoolean("sesion", true);
                 }
-
                 editor.putInt("usuario_id", response.getInt("usuario"));
-                editor.apply();
-
                 Intent intent;
-
                 if (response.getInt("rol") == 1){
                     intent = new Intent(getApplicationContext(), HomeActivity.class);
                 }
                 else{
                     editor.putInt("empresa_id", response.getInt("empresa"));
-                    editor.apply();
                     intent = new Intent(getApplicationContext(), HomeBusiActivity.class);
                 }
+                editor.apply();
                 startActivity(intent);
                 finish();
             }

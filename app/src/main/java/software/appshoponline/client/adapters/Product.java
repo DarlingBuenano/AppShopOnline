@@ -9,7 +9,7 @@ public class Product {
     public String Unidad_Medida;
     public int Categoria;
     public boolean Like;
-    public int Cantidad;
+    public int Cantidad = 1;
 
     public Product(int id, String url, String nombre, String empresa, double precio, String unidad_Medida, int categoria, boolean like){
         this.Id = id;
