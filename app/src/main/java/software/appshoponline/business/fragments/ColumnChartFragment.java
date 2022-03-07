@@ -60,6 +60,7 @@ public class ColumnChartFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
 
             datos = getArguments().getString("datos");
+            System.out.println(datos);
         }
     }
 
@@ -82,19 +83,19 @@ public class ColumnChartFragment extends Fragment {
 
         Cartesian planoCartesiano = AnyChart.column();
         planoCartesiano.animation(true);
-        planoCartesiano.title("Resumen de venta");
+        planoCartesiano.title("Resumen de ingresos por ventas de productos");
         planoCartesiano.yScale().minimum(0d);
         planoCartesiano.yAxis(0).labels().format("${%Value}{groupsSeparator: }");
         planoCartesiano.tooltip().positionMode(TooltipPositionMode.POINT);
         planoCartesiano.interactivity().hoverMode(HoverMode.BY_X);
-        planoCartesiano.xAxis(0).title("Productos");
-        planoCartesiano.yAxis(0).title("Cantidad");
+        planoCartesiano.xAxis(0).title("Periodo");
+        planoCartesiano.yAxis(0).title("Cantidad en dólares vendidos");
 
         List<DataEntry> datos = new ArrayList<>();
         try {
             for (int i = 0; i < json.length(); i++){
                 JSONObject producto = json.getJSONObject(i);
-                datos.add(new ValueDataEntry(producto.getString("x"), producto.getInt("y")));
+                datos.add(new ValueDataEntry(producto.getString("x"), producto.getDouble("y")));
             }
         }catch (JSONException e) {
             e.printStackTrace();

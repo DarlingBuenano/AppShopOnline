@@ -60,6 +60,7 @@ public class PieChartFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
 
             datos = getArguments().getString("datos");
+            System.out.println(datos);
         }
     }
 
@@ -92,14 +93,14 @@ public class PieChartFragment extends Fragment {
         try {
             for (int i = 0; i < json.length(); i++){
                 JSONObject producto = json.getJSONObject(i);
-                datos.add(new ValueDataEntry(producto.getString("x"), producto.getInt("y")));
+                datos.add(new ValueDataEntry(producto.getString("x"), producto.getDouble("y")));
             }
         }catch (JSONException e) {
             e.printStackTrace();
         }
 
         pie.data(datos);
-        pie.title("Resumen de ventas");
+        pie.title("Resumen de ingresos por ventas de productos");
         pie.labels().position("outside");
         //pie.legend().title().enabled(true);
         //pie.legend().title().text("retail channels").padding(0d, 0d, 10d, 0d);

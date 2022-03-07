@@ -38,7 +38,6 @@ public class LineChartFragment extends Fragment {
     private AnyChartView anyChartLine;
     private View root;
     private String datos;
-    private JSONArray datosArrayJson;
 
     public LineChartFragment() {
         // Required empty public constructor
@@ -61,6 +60,7 @@ public class LineChartFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
 
             datos = getArguments().getString("datos");
+            System.out.println(datos);
         }
     }
 
@@ -69,11 +69,12 @@ public class LineChartFragment extends Fragment {
                              Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_line_chart, container, false);
         try {
-            datosArrayJson = new JSONArray(datos);
+            JSONArray datosArrayJson = new JSONArray(datos);
+            lineChart(datosArrayJson);
         } catch (JSONException e) {
             e.printStackTrace();
+            System.out.println("Error: " + e.getMessage());
         }
-        lineChart(datosArrayJson);
         return root;
     }
 
@@ -82,25 +83,29 @@ public class LineChartFragment extends Fragment {
         this.anyChartLine.setProgressBar(root.findViewById(R.id.ChartViewLine_Progressbar));
 
         Cartesian planoCartesiano = AnyChart.line();
+        planoCartesiano.removeAllSeries();
         planoCartesiano.animation(true);
         //planoCartesiano.padding(10d, 20d, 5d, 20d);
         planoCartesiano.crosshair().enabled(true);
         planoCartesiano.crosshair().yLabel(true).yStroke((Stroke) null, null, null, (String) null, (String) null);
         planoCartesiano.tooltip().positionMode(TooltipPositionMode.POINT);
-        planoCartesiano.title("Resumen de venta de productos");
-        planoCartesiano.yAxis(0).title("Cantidad");
+        planoCartesiano.title("Resumen de ingresos por ventas de productos");
+        planoCartesiano.yAxis(0).title("Cantidad en dólares vendidos");
         planoCartesiano.xAxis(0).title("Periodo");
         planoCartesiano.xAxis(0).labels().padding(5d,5d,5d,5d);
 
         List<DataEntry> datosSerie = new ArrayList<>();
-
+        datosSerie.clear();
+        System.out.println("Limpiando datos de Line");
+        System.out.println(json);
         try {
             for (int i = 0; i < json.length(); i++){
-                JSONObject producto = json.getJSONObject(i);
-                datosSerie.add(new ValueDataEntry(producto.getString("x"), producto.getInt("y")));
+                JSONObject venta = json.getJSONObject(i);
+                datosSerie.add(new ValueDataEntry(venta.getString("x"), venta.getDouble("y")));
             }
         }catch (JSONException e) {
             e.printStackTrace();
+            System.out.println("Error: " + e.getMessage());
         }
 
         Line series = planoCartesiano.line(datosSerie);

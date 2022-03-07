@@ -209,7 +209,6 @@ public class StatisticBusiFragment extends Fragment {
     };
 
     private void abrir_frg_lineChart(){
-        System.out.println(datosJson);
         datos_a_enviar = new Bundle();
         datos_a_enviar.putString("datos", datosJson);
         frglineChart.setArguments(datos_a_enviar);
@@ -220,7 +219,6 @@ public class StatisticBusiFragment extends Fragment {
     }
 
     private void abrir_frg_columnChart(){
-        System.out.println(datosJson);
         datos_a_enviar = new Bundle();
         datos_a_enviar.putString("datos", datosJson);
         frgColumnChart.setArguments(datos_a_enviar);
@@ -231,7 +229,6 @@ public class StatisticBusiFragment extends Fragment {
     }
 
     private void abrir_frg_pieChart(){
-        System.out.println(datosJson);
         datos_a_enviar = new Bundle();
         datos_a_enviar.putString("datos", datosJson);
         frgPieChart.setArguments(datos_a_enviar);
