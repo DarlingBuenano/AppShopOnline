@@ -43,6 +43,8 @@ public class Constantes {
     public static final String URL_Mostrar_Productos_Vendidos_x_Mes = "/mostrar-productos-vendidos-x-mes";
     public static final String URL_Mostrar_Productos_Vendidos_x_Anio = "/mostrar-productos-vendidos-x-anio";
 
+    public static final String URL_Mostrar_Resumen_Movimiento_x_Empresa = "/mostrar-resumen-movimiento-x-empresa";
+
     public static final int VOLLEY_DEFAULT_TIMEOUT = 10000;
 
     public static final String[] UNIDADES_DE_MDIDA = {"u", "lb", "g", "kg", "l", "ml", "m", "cm"};

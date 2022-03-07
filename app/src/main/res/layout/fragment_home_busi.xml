@@ -26,7 +26,7 @@ tools:context=".business.fragments.HomeBusiFragment">
                 android:textSize="@dimen/spNivel_basicResumen"
                 android:text="Vendidos este mes"/>
             <TextView
-                android:id="@+id/actHomeBusi_txtVendidosAlMes"
+                android:id="@+id/frgHomeBusi_txtVendidosEsteMes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/spNivel4"
@@ -48,7 +48,7 @@ tools:context=".business.fragments.HomeBusiFragment">
                 android:textSize="@dimen/spNivel_basicResumen"
                 android:text="Vendidos este año"/>
             <TextView
-                android:id="@+id/actHomeBusi_txtVendidosAlAnio"
+                android:id="@+id/frgHomeBusi_txtVendidosEsteAnio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/spNivel4"
@@ -66,9 +66,9 @@ tools:context=".business.fragments.HomeBusiFragment">
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/spNivel_basicResumen"
-                android:text="Productos disponibles"/>
+                android:text="Total /u vendidas"/>
             <TextView
-                android:id="@+id/actHomeBusi_txtProductosDisponibles"
+                android:id="@+id/frgHomeBusi_txtTotalUnidadesVendidas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/spNivel4"

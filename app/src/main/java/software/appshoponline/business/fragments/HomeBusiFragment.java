@@ -1,5 +1,8 @@
 package software.appshoponline.business.fragments;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,7 +12,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import software.appshoponline.Constantes;
+import software.appshoponline.Dominio;
 import software.appshoponline.R;
 
 public class HomeBusiFragment extends Fragment {
@@ -23,11 +39,19 @@ public class HomeBusiFragment extends Fragment {
     Button btnFrutasBusi;
     Button btnGranosBusi;
     Button btnOtrosBusi;
+    TextView txtVendidosEsteMes;
+    TextView txtVendidosEsteAnio;
+    TextView txtTotalUnidadesVendidas;
     FragmentTransaction transaction;
     Fragment frg_vegetalesBusi;
     Fragment frg_frutasBusi;
     Fragment frg_granosBusi;
     Fragment frg_otrosBusi;
+
+    SharedPreferences pref;
+    private int empresa_id;
+    RequestQueue requestQueue;
+    JsonObjectRequest jsonObjectRequest;
 
     public HomeBusiFragment() {
         // Required empty public constructor
@@ -49,6 +73,8 @@ public class HomeBusiFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        pref = getContext().getSharedPreferences("shared_login_data", Context.MODE_PRIVATE);
+        empresa_id = pref.getInt("empresa_id", 1);
     }
 
     @Override
@@ -66,6 +92,10 @@ public class HomeBusiFragment extends Fragment {
         btnGranosBusi = root.findViewById(R.id.frghomebusi_btnGranos);
         btnOtrosBusi = root.findViewById(R.id.frghomebusi_btnOtros);
 
+        txtVendidosEsteMes = root.findViewById(R.id.frgHomeBusi_txtVendidosEsteMes);
+        txtVendidosEsteAnio = root.findViewById(R.id.frgHomeBusi_txtVendidosEsteAnio);
+        txtTotalUnidadesVendidas = root.findViewById(R.id.frgHomeBusi_txtTotalUnidadesVendidas);
+
         transaction = getParentFragmentManager().beginTransaction();
         transaction.replace(R.id.frghomebusi_container_fragments, frg_vegetalesBusi);
         transaction.commit();
@@ -76,6 +106,12 @@ public class HomeBusiFragment extends Fragment {
         btnOtrosBusi.setOnClickListener(btnMostrarFragmentProductos);
 
         return root;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        cargarResumenMovimiento();
     }
 
     private View.OnClickListener btnMostrarFragmentProductos = new View.OnClickListener() {
@@ -122,4 +158,40 @@ public class HomeBusiFragment extends Fragment {
         btnOtrosBusi.setBackgroundResource(R.drawable.shp_btn_header_right);
         btnOtrosBusi.setTextColor(getResources().getColor(R.color.app_font));
     }
+
+    private void cargarResumenMovimiento(){
+        String url = Dominio.URL_WebServie + Constantes.URL_Mostrar_Resumen_Movimiento_x_Empresa + "/" + empresa_id;
+        this.requestQueue = Volley.newRequestQueue(getContext());
+        this.jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, onListener, errorListener);
+        this.requestQueue.add(jsonObjectRequest);
+    }
+
+    private Response.Listener<JSONObject> onListener = new Response.Listener<JSONObject>() {
+        @Override
+        public void onResponse(JSONObject response) {
+            try {
+                if (response.getBoolean("accion")){
+                    JSONObject resumen = response.getJSONObject("datos");
+                    txtVendidosEsteMes.setText( "$" + resumen.getString("este_mes") );
+                    txtVendidosEsteAnio.setText( "$" + resumen.getString("este_anio") );
+                    txtTotalUnidadesVendidas.setText( "$" + resumen.getString("total_unidades_vendidas") );
+                }
+                else{
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    builder.setMessage("¿Eres nuevo aquí? Parece que no has vendido");
+                    builder.setPositiveButton(R.string.dialog_aceptar, null);
+                    builder.create().show();
+                }
+            } catch (JSONException e){
+                e.printStackTrace();
+                System.out.println("Error: " + e.getMessage());
+            }
+        }
+    };
+    private Response.ErrorListener errorListener = new Response.ErrorListener() {
+        @Override
+        public void onErrorResponse(VolleyError error) {
+
+        }
+    };
 }
