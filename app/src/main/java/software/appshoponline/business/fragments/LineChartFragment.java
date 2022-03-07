@@ -35,7 +35,6 @@ public class LineChartFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private AnyChartView anyChartLine;
     private View root;
     private String datos;
 
@@ -60,7 +59,6 @@ public class LineChartFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
 
             datos = getArguments().getString("datos");
-            System.out.println(datos);
         }
     }
 
@@ -79,13 +77,14 @@ public class LineChartFragment extends Fragment {
     }
 
     private void lineChart(JSONArray json){
-        this.anyChartLine = root.findViewById(R.id.ChartViewLine);
-        this.anyChartLine.setProgressBar(root.findViewById(R.id.ChartViewLine_Progressbar));
+        AnyChartView anyChartLine;
+        anyChartLine = root.findViewById(R.id.ChartViewLine);
+        anyChartLine.setProgressBar(root.findViewById(R.id.ChartViewLine_Progressbar));
 
         Cartesian planoCartesiano = AnyChart.line();
         planoCartesiano.removeAllSeries();
+
         planoCartesiano.animation(true);
-        //planoCartesiano.padding(10d, 20d, 5d, 20d);
         planoCartesiano.crosshair().enabled(true);
         planoCartesiano.crosshair().yLabel(true).yStroke((Stroke) null, null, null, (String) null, (String) null);
         planoCartesiano.tooltip().positionMode(TooltipPositionMode.POINT);
@@ -96,8 +95,6 @@ public class LineChartFragment extends Fragment {
 
         List<DataEntry> datosSerie = new ArrayList<>();
         datosSerie.clear();
-        System.out.println("Limpiando datos de Line");
-        System.out.println(json);
         try {
             for (int i = 0; i < json.length(); i++){
                 JSONObject venta = json.getJSONObject(i);
@@ -115,8 +112,10 @@ public class LineChartFragment extends Fragment {
 
         planoCartesiano.legend().enabled(true);
         planoCartesiano.legend().fontSize(13d);
+        planoCartesiano.legend().title("Ventas");
         //planoCartesiano.legend().padding(0d, 0d, 10d, 0d);
 
-        this.anyChartLine.setChart(planoCartesiano);
+        anyChartLine.setChart(planoCartesiano);
+        anyChartLine.invalidate();
     }
 }

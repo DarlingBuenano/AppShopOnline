@@ -65,9 +65,6 @@ public class StatisticBusiFragment extends Fragment {
     private Spinner spinnerPeriodo;
     private Spinner spinnerGrafica;
     private FragmentTransaction transaction;
-    private Fragment frglineChart;
-    private Fragment frgColumnChart;
-    private Fragment frgPieChart;
     private Bundle datos_a_enviar;
 
     SharedPreferences pref;
@@ -105,10 +102,6 @@ public class StatisticBusiFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        frglineChart = new LineChartFragment();
-        frgColumnChart = new ColumnChartFragment();
-        frgPieChart = new PieChartFragment();
-
         this.requestQueue = Volley.newRequestQueue(getContext());
         root = inflater.inflate(R.layout.fragment_statistic_busi, container, false);
 
@@ -150,7 +143,6 @@ public class StatisticBusiFragment extends Fragment {
         @Override
         public void onResponse(JSONObject response) {
             try {
-                System.out.println(response.getBoolean("accion"));
                 if (response.getBoolean("accion")){
                     datosJson = response.getJSONArray("datos").toString();
                     if (datosJson != null){
@@ -209,6 +201,9 @@ public class StatisticBusiFragment extends Fragment {
     };
 
     private void abrir_frg_lineChart(){
+        Fragment frglineChart;
+        frglineChart = new LineChartFragment();
+
         datos_a_enviar = new Bundle();
         datos_a_enviar.putString("datos", datosJson);
         frglineChart.setArguments(datos_a_enviar);
@@ -219,6 +214,8 @@ public class StatisticBusiFragment extends Fragment {
     }
 
     private void abrir_frg_columnChart(){
+        Fragment frgColumnChart;
+        frgColumnChart = new ColumnChartFragment();
         datos_a_enviar = new Bundle();
         datos_a_enviar.putString("datos", datosJson);
         frgColumnChart.setArguments(datos_a_enviar);
@@ -229,6 +226,8 @@ public class StatisticBusiFragment extends Fragment {
     }
 
     private void abrir_frg_pieChart(){
+        Fragment frgPieChart;
+        frgPieChart = new PieChartFragment();
         datos_a_enviar = new Bundle();
         datos_a_enviar.putString("datos", datosJson);
         frgPieChart.setArguments(datos_a_enviar);

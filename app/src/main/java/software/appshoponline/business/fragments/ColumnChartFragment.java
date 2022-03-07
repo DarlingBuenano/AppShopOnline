@@ -60,7 +60,6 @@ public class ColumnChartFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
 
             datos = getArguments().getString("datos");
-            System.out.println(datos);
         }
     }
 
@@ -109,5 +108,6 @@ public class ColumnChartFragment extends Fragment {
                 .offsetY(5d)
                 .format("${%Value}{groupsSeparator: }");
         this.anyChartColumn.setChart(planoCartesiano);
+        this.anyChartColumn.invalidate();
     }
 }

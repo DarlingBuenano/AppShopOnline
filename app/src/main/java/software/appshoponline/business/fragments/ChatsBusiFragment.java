@@ -1,5 +1,6 @@
 package software.appshoponline.business.fragments;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -121,7 +122,10 @@ public class ChatsBusiFragment extends Fragment {
                     recyclerChats.setAdapter(chatAdapter);
                 }
                 else{
-                    Toast.makeText(getContext(), "No tienes chats disponibles por el momento", Toast.LENGTH_SHORT).show();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    builder.setMessage("No tienes chats disponibles por el momento");
+                    builder.setPositiveButton(R.string.dialog_aceptar, null);
+                    builder.create().show();
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

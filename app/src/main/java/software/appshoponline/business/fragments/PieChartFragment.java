@@ -34,7 +34,6 @@ public class PieChartFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private AnyChartView anyChartPie;
     private View root;
     private String datos;
     private JSONArray datosArrayJson;
@@ -60,7 +59,6 @@ public class PieChartFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
 
             datos = getArguments().getString("datos");
-            System.out.println(datos);
         }
     }
 
@@ -78,8 +76,9 @@ public class PieChartFragment extends Fragment {
     }
 
     private void pieChart(JSONArray json){
-        this.anyChartPie = root.findViewById(R.id.ChartViewPie);
-        this.anyChartPie.setProgressBar(root.findViewById(R.id.ChartViewPie_Progressbar));
+        AnyChartView anyChartPie;
+        anyChartPie = root.findViewById(R.id.ChartViewPie);
+        anyChartPie.setProgressBar(root.findViewById(R.id.ChartViewPie_Progressbar));
 
         Pie pie = AnyChart.pie();
         pie.setOnClickListener(new ListenersInterface.OnClickListener(new String[]{"x", "value"}) {
@@ -106,6 +105,7 @@ public class PieChartFragment extends Fragment {
         //pie.legend().title().text("retail channels").padding(0d, 0d, 10d, 0d);
         //pie.legend().position("center-bootom").itemsLayout(LegendLayout.HORIZONTAL).align(Align.CENTER);
 
-        this.anyChartPie.setChart(pie);
+        anyChartPie.setChart(pie);
+        anyChartPie.invalidate();
     }
 }
